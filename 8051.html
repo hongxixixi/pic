@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            height: 100%;
+        }
+        div:nth-child(1){
+            position: relative;
+            width:300px;
+            height: 300px;
+            margin: 0 auto;
+            background: pink;
+            /* overflow: hidden; */
+            background-size: contain;
+            transition: all 1s linear;
+        }
+        div:nth-child(1):hover{
+            box-shadow: 2px 5px 15px green;
+        }
+        div img{
+            transition: all 2s linear;
+        }
+        div img:hover{
+            position: absolute;
+            top:-5px;
+        }
+        span{
+            display: inline-block;
+            width: 300px;
+            height: 100px;
+            position: absolute;
+            bottom: -80px;
+            background: yellow;
+            transition: all 1s ease-in;
+        }
+        span:hover{
+            bottom:0px;
+            background: yellow;
+            transform: translate(-50%, -50%) scale(2, 0.5) rotate(-45deg);
+            transform-origin: center bottom;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div>
+            <img src="i/gift6.jpg" alt="">
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>

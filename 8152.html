@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       
+        let lead = function(arr,str){
+            Promise.all(arr).then((data)=>{
+                console.log('end');
+            })
+        }
+        lead([runAsync1,runAsync2,runAsync3],'begin');
+        // let lead = function(arr,str){
+        //     let index=0;     // 当前运行的数组的索引
+        //     let ret ;        // 接收上一步返回的promise值
+        //     let len=arr.length;
+        //     while(index<=len&&arr[index+1]){
+        //         console.log(index);
+        //         if(index==0){
+        //             arr[index](str).then(function(data){
+        //                 index++;   
+        //                 console.log('index')
+        //                 return ret=arr[index](data);
+        //            });
+        //         }
+        //         else{
+        //             ret.then(function(data){
+        //             index++;
+        //             console.log(index);
+        //             return ret=arr[index](data);
+        //            });
+        //         }
+        //     }
+        // }
+        // lead([runAsync1,runAsync2,runAsync3],'begin');
+
+        // lead('begin').then(function(data){
+        //     return runAsync1;
+        // }).then(function(data){
+        //     return runAsync2;
+        // }).then(function(data){
+        //     return runAsync3;
+        // });
+        
+        // runAsync1('beginA').then(function(data){
+        //      return runAsync2(data);
+        // }).then(function(data){
+        //      return runAsync3(data);
+        // }).then(function(data){
+        //     console.log(data);
+        // });
+
+        function runAsync1(data){
+            const a = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log("A end..." + data);
+                let dataA = data+'+B';
+                resolve(dataA);
+            }, 1000);
+          });
+          return a;
+        }
+
+        function runAsync2(data){
+            const b = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log("B end..." + data);
+                let dataB = data+'+C';
+                resolve(dataB);
+            }, 1000);
+          });
+          return b;
+        }   
+        
+        function runAsync3(data){
+            const c = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log("C end..." + data);
+                let dataC = data+'+end';
+                resolve(dataC);
+            }, 1000);
+          });
+          return c;
+        }
+
+
+        (function fn(){
+            const tasks = []; // 这里存放异步操作的 Promise
+            const output = (i) => new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log(new Date, i);
+                    resolve();
+                }, 1000 * i);
+            });
+
+            // 生成全部的异步操作
+            for (var i = 0; i < 5; i++) {
+                tasks.push(output(i));
+            }
+
+            // 异步操作完成之后，输出最后的 i
+            Promise.all(tasks).then(() => {
+                setTimeout(() => {
+                    console.log(new Date, i);
+                }, 1000);
+            });
+           })()
+    </script>
+</body>
+</html>

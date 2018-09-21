@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 260px;
+            height: 260px;
+            margin: 50px;
+        }
+        .circle{
+            width: 60px;
+            height: 60px;
+            background: orange;
+            border-radius: 50%;
+            float: left;
+            position: relative;
+            transform: none;
+        }
+        .circle:nth-child(1){transform: translateX(0px)translateY(10px);}
+        .circle:nth-child(2){transform: translateX(130px)translateY(10px);}
+        .circle:nth-child(3){transform: translateX(-120px) translateY(180px);} 
+        .circle:nth-child(4){transform: translateX(10px) translateY(180px);}
+        .circle:nth-child(5){position:absolute;transform: translateX(100px) translateY(100px);}
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class='circle circle1'></div>
+        <div class='circle circle2'></div>
+        <div class='circle circle3'></div>
+        <div class='circle circle4'></div>
+        <div class='circle circle5'></div>
+    </div>
+    <script>
+        var wrapper = document.getElementsByClassName('wrapper')[0];
+        var body = document.getElementsByTagName('body')[0];
+        var timer,deg=1;
+        (function InterVal(){
+            timer = setInterval(function(){
+                deg++;
+                wrapper.style.transform = 'rotate('+deg+'deg)';
+            },0.5)
+        }())
+        body.onclick=function(){
+            clearInterval(1);
+            console.log(111);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+            <!-- <div class="wrap">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        -->
+            <script>
+                var myObject = {
+                foo: 1,
+                bar: 2,
+                get baz() {
+                    return this.foo + this.bar;
+                },
+                };
+
+                var myReceiverObject = {
+                foo: 4,
+                bar: 4,
+                };
+
+
+
+
+        // var pipe = (function () {
+        //     return function (value) {
+        //         var funcStack = [];
+        //         var oproxy = new Proxy({} , {
+        //         get : function (pipeObject, fnName) {
+        //             if (fnName === 'get') {
+        //             return funcStack.reduce(function (val, fn) {
+        //                 return fn(val);
+        //             },value);
+        //             }
+        //             funcStack.push(window[fnName]);
+        //             return oproxy;
+        //         }
+        //         });
+        //         return oproxy;
+        //      }
+        // }());
+
+        // var double = n => n * 2;
+        // var pow    = n => n * n;
+        // var reverseInt = n => n.toString().split("").reverse().join("") | 0;
+
+        // pipe(3).double.pow.reverseInt.get; // 63 
+
+
+        // var divs = document.querySelectorAll('div');
+        // const set = new Set(divs);
+        
+        // let sym = Symbol('symbol');
+        // var obj = {
+        //     [sym]:'this is a Smybol',
+        //     name:'first'
+        // }
+        // console.log( Object.getOwnPropertySymbols(obj) );
+        // console.log( Reflect.ownKeys(obj) );
+
+        // let s1=Symbol.for('foo');
+        // let s2=Symbol.for('foo');
+        // console.log(s1===s2);
+
+        // const name = Symbol('foo');
+        
+        // var arr = [2,3,4,,4,1,2,4,5];
+        // const set = new Set(arr);
+        // console.log(Array.from(set) instanceof Array);
+
+        // const k1 = ['a'];
+        // const k2 = ['a'];
+        // console.log(k1==k2);
+        // const map = new Map();
+        // map.set(k1,'111');
+        // map.set(k2,'222');
+        // console.log(map);
+    </script>
+</body>
+</html>

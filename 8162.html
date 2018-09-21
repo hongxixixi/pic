@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 哈希排序
+         var arr=[2,5,1,6,8,9,4,12,5,7,8,9,11];
+         var newArr = hashSort(arr);
+         console.log(newArr);
+        function hashSort(arr){
+            var len = arr.length;
+            var gap = Math.floor(len/2);
+            while(gap>=1){
+                for(var i=0;i<gap;i++){
+                    for(var j=i;j<len;j+=gap){
+                        for(var z=j+gap;z<len;z+=gap){
+                            if(arr[j]>arr[z]){
+                                var temp = arr[z];
+                                arr[z] = arr[j];
+                                arr[j] = temp;
+                            }
+                        }
+                   }
+                }
+                gap=Math.floor(gap/2);
+            }
+            return arr;
+        }
+
+
+        //  选择排序
+        // function selectSort(arr){
+        // var temp,minIndex;
+        // for(let i=0;i<arr.length;i++){
+        //      minIndex=i;  //当前最小数的索引
+        //     for(let j=i+1;j<arr.length;j++){
+        //         if(arr[j]<arr[minIndex]){
+        //             minIndex=j;
+        //         }
+        //     }
+        //     temp = arr[minIndex];
+        //     arr[minIndex] = arr[i];
+        //     arr[i] = temp;
+        //   }
+        //   return arr;
+        // }
+        // var arr=[2,5,1,6,8,9,4,12,5,7];
+        // var newArr = selectSort(arr);
+        // console.log(newArr);
+    </script>
+</body>
+</html>

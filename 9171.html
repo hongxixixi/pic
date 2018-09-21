@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #app {
+        width: 800px;
+        margin: 20px auto;
+    }
+
+    #tb {
+        width: 800px;
+        border-collapse: collapse;
+        margin: 20px auto;
+    }
+
+    #tb th {
+        background-color: #0094ff;
+        color: white;
+        font-size: 16px;
+        padding: 5px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    #tb td {
+        padding: 5px;
+        text-align: center;
+        border: 1px solid black;
+    }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="../vue-resource121.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="id">
+        <input type="text" v-model="pname">
+        <button>添加数据</button>
+
+        <table id="tb">
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="item in list">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.ctime}}</td>
+                <td>
+                <a href="javascript:void(0)">删除</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+
+ new Vue({
+    el :'#app',
+    data:{
+        list:[]
+    },
+    // Vue对象实例创建成功以后就会自动调用这个方法
+    created:function(){
+        this.getlist();
+    },
+    methods:{
+        getlist:function(){
+            // 请求服务器的api获取到品牌的数据列表
+            this.$http.get('http://vueapi.ittun.com/api/getprodlist')
+            .then(function(response){
+                // 1、处理服务器异常信息提示
+                if(response.body.status != 0){
+                    alert(response.body.message);
+                    return;
+                }
+
+                // 2、处理正常的数据逻辑
+               this.list =  response.body.message;  //直接将数据放到list数组当中，页面就会自动显示
+               console.log(this.list);
+            });
+        }
+    }
+ });
+</script>
+
+</html>

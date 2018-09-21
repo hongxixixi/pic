@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='js/jquery-3.3.1.js'></script>
+    <title>图片折叠</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size:0; 
+        }
+        html{
+            width: 100%;
+            height: 100%;
+           background-image: linear-gradient(to left top,#f5a1d5,#cdd3e9)
+        }
+        img{
+            width: 140px;
+            height: 110px;
+            border-radius: 13px;
+            margin: 9px;
+            position: relative;
+        }
+        div{
+            left: 0px;
+            right:0;
+            width: 650px;
+            margin:100px auto;
+        }
+        li{
+            height: 170px;
+            width: 160px;
+            display: inline-block;
+            border:1px solid pink;
+            margin:4px;
+            border-radius: 13px;
+            background-color: white;
+            box-shadow: 1px 3px 3px 0;
+            transition: all 0.4s cubic-bezier(0.63, 0.15, 0.03, 1.22);
+            transition-delay: 1s;    
+            position: relative;
+            transform: none;
+        }
+        span{
+            font-size: 20px;
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .click li{
+            position: absolute;
+        }
+
+        .click .pic1{
+            z-index: 9;
+            transform: rotateZ(-4deg);
+        }
+        .click .pic2{
+            z-index: 8;
+            transform: rotateZ(4deg);
+        }
+        .click .pic3{
+            z-index: 7;
+            transform: rotateZ(-2deg);
+        }
+
+        .click .pic4{
+            z-index: 6;
+            transform: rotateZ(2deg);
+        }
+        .click .pic5{
+            z-index: 5;
+            transform: rotateZ(0deg);
+            left: 640px;
+        }
+        .click .pic6{
+            z-index: 4;
+            transform: rotateZ(6deg);
+            left:640px;
+        }
+        .click .pic7{
+            z-index: 3;
+            transform: rotateZ(-6deg);
+        }
+        .click .pic8{
+            z-index: 2;
+            transform: rotateZ(8deg);
+        }
+        .click .pic9{
+            z-index: 1;
+            transform: rotateZ(-8deg);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="click">
+    <ul>
+        <li class="pic1"><img src="i/gift1.jpg"><span>picture</span></li >
+        <li class="pic2"><img src="i/gift2.jpg"><span>picture</span></li >
+        <li class="pic3"><img src="i/gift3.jpg"><span>picture</span></li >
+    </ul>
+    <ul>
+        <li class="pic4"><img src="i/gift4.jpg"><span>picture</span></li >
+        <li class="pic5"><img src="i/gift5.jpg"><span>picture</span></li >
+        <li class="pic6"><img src="i/gift6.jpg"><span>picture</span></li >
+    </ul>
+    <ul>
+        <li class="pic7"><img src="i/gift7.jpg"><span>picture</span></li >
+        <li class="pic8"><img src="i/gift8.jpg"><span>picture</span></li >
+        <li class="pic9"><img src="i/gift9.jpg"><span>picture</span></li >
+    </ul>
+    </div>
+    <script>
+        window.onload=function(){
+            $('img').click(function(){
+                $("div").toggleClass("click");
+        })
+        var i;
+        for(i=0;i<10;i++){
+           
+        }
+        console.log(i);
+    }
+    </script>
+</body>
+</html>

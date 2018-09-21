@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            position: relative;
+            text-align: center;
+            margin-top:10%;
+        }
+        .btn{
+            position: absolute;
+            background-color: grey;
+            box-shadow: 0 0 2px 2px #2d2d2d;
+            width: 80px;
+            height: 30px;
+        }
+        .btn:hover{
+            animation: dou 0.3s ;
+        }
+        @keyframes dou{
+            0%,90%{
+                margin-top:0;
+            }
+            10%,50%{
+                margin-top:8px; 
+            }
+            20%,60%{
+                margin-top:16px;
+            }
+            30%,80%{
+                margin-top:12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div >
+        <button class="btn">
+            Hover me
+        </button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function* inner() {
+        yield 'hello!';
+        }
+
+        function* outer1() {
+        yield 'open';
+        yield inner();
+        yield 'close';
+        }
+
+        var gen1 = outer1()
+
+        function* outer2() {
+        yield 'open'
+        yield* inner()
+        yield 'close'
+        }
+
+        var gen2 = outer2()
+        // gen.next().value // "open"
+        // gen.next().value // "hello!"
+        // gen.next().value // "close"
+
+
+
+        // function* fibonacci() {
+        // let [prev, curr] = [0, 1];
+        // for (;;) {
+        //     yield curr;
+        //     [prev, curr] = [curr, prev + curr];
+        // }
+        // }
+
+        // for (let n of fibonacci()) {
+        // if (n > 1000) break;
+        // console.log(n);
+        // }
+
+
+//         function* f() {           
+//  //Generator 函数执行后，返回一个遍历器对象。该对象本身也具有Symbol.iterator属性，执行后返回自身
+//         for(var i = 0; i<3; i++) {
+//             var reset = yield i;
+//             if(reset) { i = -1; }
+//         }
+//         }
+//         var g = f();
+
+        // var obj = {
+        //     1:'firstname',
+        //     2:18,
+        //     sex:'woman',
+        //     3:'the three',
+        //     length:3
+        // }
+        // var arr = Array.from(obj);      //数组长度为3，数值键会被转换加入数组，字符串的位置是undefine --- (3) [undefined, "firstname", 18]
+
+
+
+        // var obj = {
+        //     name:'firstname',
+        //     age:18,
+        //     sex:'woman',
+        //     [Symbol.iterator](){return this},
+        //     next(){
+        //         if(this.age<20)
+        //         return {
+        //           value:this.age++,
+        //            done:false
+        //         }
+        //         else return {
+        //             value:undefined,
+        //             done:true
+        //         }
+        //     }
+        // }
+        // for(var value of obj){
+        //     console.log(value);
+        // }
+        // const promise1 = new Promise((resolve, reject) => {
+        // setTimeout(() => {
+        // resolve('success')
+        // }, 1000);
+        // });
+        
+        // const promise2 = promise1.then(() => {
+        // throw new Error('error!!!');
+        // });
+        
+        // console.log('promise1', promise1);
+        // console.log('promise2', promise2);
+        
+        // setTimeout(() => {
+        // console.log('promise1', promise1);
+        // console.log('promise2', promise2);
+        // }, 2000);
+
+
+    // const promise = new Promise((resolve, reject) => {
+    // setTimeout(() => {
+    // console.log('once');
+    // resolve('success');
+    // }, 1000);
+    // });
+    
+    // const start = Date.now();
+    // promise.then((res) => {
+    // console.log(res, Date.now() - start);
+    // });
+    
+    // promise.then((res) => {
+    // console.log(res, Date.now() - start);
+    // });
+    </script>
+</body>
+</html>

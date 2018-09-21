@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 100%;
+            height: 200px;
+            perspective: 1100px;
+        }
+        .wrap .box{
+            position: relative;
+            margin: 0 auto;
+            width:300px;
+            height: 300px;
+            border: 2px solid black;
+            top:50px;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        .box img{
+            position: absolute;
+            perspective: 1100px;
+            left: 0;
+            width:300px;
+            height: 300px;
+        }
+        .box img:nth-child(1){
+            transform: rotateX(180deg) rotateY(90deg) translateZ(-150px); 
+        }
+        .box img:nth-child(2){
+            transform: rotateY(90deg) translateZ(+150px); 
+        }
+        .box img:nth-child(3){
+            transform: rotateX(-90deg) translateZ(+150px); 
+        }
+        .box img:nth-child(4){
+            transform: rotateX(90deg) translateZ(+150px); 
+        }
+        .box img:nth-child(5){
+            transform: rotateX(180deg) translateZ(150px); 
+        }
+        .box img:nth-child(6){
+            transform:translateZ(150px); 
+        }
+        .box1 .img1{
+            transform: rotateX(180deg);
+        }
+        
+        .button{
+            position: relative;
+            top:190px;
+            width:100%;
+            height: 200px;
+        }
+        .button .box1{
+            margin: 0 auto;
+            text-align: center;
+            /* display: grid;
+            grid-template-columns: 105px 105px 105px ;
+            grid-template-rows: 85px 85px;
+            justify-content: center;
+            grid-gap: 1.5rem; */
+        }
+        .button .box1 img{
+            width: 100px;
+            height: 100px;
+        }
+        .button p{
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .box.nothing{
+            transform: translateZ(-15rem) rotateX(-15deg) rotateY(18deg);
+        }
+
+        .box.img1{
+            transform: rotateY(80deg);
+        }
+        .box.img2{
+            transform: rotateY(-90deg);
+        }
+        .box.img3{
+            transform: rotateX(90deg);
+        }
+        .box.img4{
+            transform: rotateX(-90deg);
+        }
+        .box.img5{
+            transform: rotateX(180deg);
+        }
+        .box.img6{
+            transform: rotateX(0deg);
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box nothing">
+        <img src="chen/c1.jpg" alt="">
+        <img src="chen/c6.jpg" alt="">
+        <img src="chen/c2.jpg" alt=""> 
+        <img src="chen/c3.jpg" alt="">
+        <img src="chen/c4.jpg" alt="">
+        <img src="chen/c5.jpg" alt=""> 
+    </div>
+</div>
+<div class="button">
+       
+    <div class="box1"> 
+        <p>请点击旋转图片</p>
+        <img src="chen/c1.jpg" alt="" class="img1">
+        <img src="chen/c6.jpg" alt="" class='img2'>
+        <img src="chen/c2.jpg" alt="" class='img3'>
+        <img src="chen/c3.jpg" alt="" class='img4'>
+        <img src="chen/c4.jpg" alt="" class='img5'>
+        <img src="chen/c5.jpg" alt="" class='img6'> 
+    </div> 
+</div>
+    <script>
+        (function fn(){
+            var imgs=document.getElementsByTagName('img');
+            var box=document.getElementsByClassName('box')[0];
+            for(var i=0;i<imgs.length;i++){
+                imgs[i].onclick=function(){
+                    if(box.classList[1]!=this.classList[0]){
+                        box.classList.remove(box.classList[1]);
+                        box.classList.add(this.classList[0]);
+                    }
+                }
+            }
+        })()
+    </script>
+</body>
+</html>

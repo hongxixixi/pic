@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       .wrap div{
+            position: relative;
+            width:auto;
+            margin:10px auto;
+            background: yellow;
+            text-align: center;
+            box-shadow:3px 3px gray;
+        }
+        .wrap div:hover{
+            top:3px;
+        }
+        .wrap{
+            position: relative;
+            width: 160px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class='wrap'>
+        <input type="text">
+        <div class="box1">设置username</div>
+        <input type="text" class="text1">
+        <div class="box2">提取username</div>
+        <div class="box3">删除username</div>
+        <div class="box2">清空username</div>
+    </div>
+    <script>
+        var text=document.querySelector('input');
+        var text1=document.querySelector('.text1');
+        var divs=document.querySelectorAll('div');
+        //提取的divs包括外部的wrap 
+        divs[1].onclick=function(e){
+            if(text.value!=null)
+            window.localStorage.setItem('username',text.value);
+        }
+        text.onblur=function(){
+            if(text.value==null){
+                console.log('a');
+                text.value=window.localStorage.getItem('username');
+            }
+        }
+        divs[2].onclick=function(e){
+            text.value=window.localStorage.getItem('username');
+        }
+        divs[3].onclick=function(e){
+            window.localStorage.removeItem('username');
+        }
+        divs[4].onclick=function(e){
+            window.localStorage.clear();
+        }
+        window.onload=function(){
+            text.value=window.localStorage.getItem('username');
+        }
+       window.addEventListener('online', function () {
+           alert('网络连接建立！');
+         });
+
+       window.addEventListener('offline', function () {
+           alert('网络连接断开！');
+         })
+    </script>
+</body>
+</html>

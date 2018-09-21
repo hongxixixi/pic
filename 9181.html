@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            background: yellow;
+        }
+        .right{
+            position: relative;
+            width: 500px;
+            height: 400px;
+            padding-left: 200px;
+            background: pink;
+        }
+        .left{
+            position: absolute;
+            width: 200px;
+            height: 100%;
+            left: 0;
+            background: gray;
+        }
+        /* .box{
+            width: 100%;
+            height: 300px;
+            background: red;
+        }
+        .right{
+            width: 500px;
+            height: 300px;
+            float: left;
+            background: pink;
+        }
+        .left{
+            float: left;
+            left: 0;
+            width: 500px;
+            height: 100%;
+            background: green;
+        } */
+    </style>
+</head>
+<body>
+        <div class="right">
+            <div class="left"></div>
+        </div>
+    <!-- <div class="box">
+        <div class="right"></div>
+        <div class="left"></div>
+    </div> -->
+    <script>
+        function unique(arr) {
+            var obj = {};
+            for(var i = 0;i<arr.length;i++){
+                if(!obj[ arr[i] ]){
+                    obj[ arr[i] ] = 1;
+                }
+                else{
+                    arr.splice(i,1);
+                    i--;
+                }
+            }
+          }
+          var arr1 = [1,2,4,2,4,1];
+          unique(arr1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let lead = function(arr,str){
+
+         }
+        lead([runAsync1,runAsync2,runAsync3],'begin');
+
+
+    function runAsync1(data){
+            const a = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log("A end..." + data);
+                let dataA = data+'+B';
+                resolve(dataA);
+            }, 1000);
+          });
+          return a;
+        }
+
+        function runAsync2(data){
+            const b = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log("B end..." + data);
+                let dataB = data+'+C';
+                resolve(dataB);
+            }, 1000);
+          });
+          return b;
+        }   
+        
+        function runAsync3(data){
+            const c = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log("C end..." + data);
+                let dataC = data+'+end';
+                resolve(dataC);
+            }, 1000);
+          });
+          return c;
+        }
+    </script>
+</body>
+</html>

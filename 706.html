@@ -1,0 +1,402 @@
+<script type="text/javascript">
+    function StringBuffer() { 
+    this._strings = new Array(); 
+    } 
+    StringBuffer.prototype.append = function(str) { 
+    this._strings.push(str); 
+    } 
+    StringBuffer.prototype.toString = function() { 
+    return this._strings.join(""); 
+    } 
+    
+    var rownum; //row number 
+    var colnum; //column number 
+    var minenum; //mine number 
+    var totalCellNum; // total number of cell 
+    var elapseTime; //elapse time for mine sweeping 
+    var statedNum; // swept cell number 
+    var elapseSpan; // for display elapse time 
+    var tick; // timer for mine sweeping 
+    
+    //generating mine area 
+    function init() { 
+    rownum = parseInt(document.mineform.rownum.value); 
+    colnum = parseInt(document.mineform.colnum.value); 
+    minenum = parseInt(document.mineform.minenum.value); 
+    totalCellNum = rownum * colnum; 
+    
+    var buffer = new StringBuffer(); 
+    buffer.append("<table cellspacing=\"0\" cellpadding=\"0\" border='1'>"); 
+    for (var i = 0; i < rownum; i++) { 
+    buffer.append("<tr>"); 
+    for(var j = 0; j < colnum; j++) 
+    buffer.append("<td bgcolor='#AAA898' id=\"" + i + "_" + j+"\" name='cell' />&nbsp;</td>"); 
+    buffer.append("</tr>"); 
+    } 
+    buffer.append("</table>"); 
+    var workarea = document.getElementById("workarea"); 
+    workarea.innerHTML = buffer.toString(); 
+    mine(); // lay mines at the work area 
+    startTick(); // starting time 
+    } 
+    
+    // periodically update the elapsed time 
+    function displayelapsedTime() { 
+    elapseSpan.innerHTML = elapseTime++; 
+    if (elapseTime > 999) 
+    stopTick(); 
+    } 
+    
+    // start up the timer for sweeping mine 
+    function startTick() { 
+    if (tick) stopTick(); 
+    elapseTime = 0; 
+    statedNum = 0; 
+    elapseSpan = document.getElementById("elapse"); 
+    document.getElementById("message").innerHTML = ""; 
+    tick = setInterval(displayelapsedTime, 1000); // start tick 
+    } 
+    
+    // stop the timer 
+    function stopTick() { 
+    clearInterval(tick); 
+    tick = null; 
+    } 
+    
+    // lay mines at the work area 
+    function mine() { 
+    var arr = new Array(totalCellNum); 
+    
+    for(var i = 0; i < totalCellNum; i++) 
+    arr[i] = i; 
+    
+    for(var i = 0; i < minenum; i++) { 
+    var suffix = Math.floor(arr.length * Math.random()); 
+    var rnd = arr[suffix]; 
+    var row = Math.floor(rnd / colnum); 
+    var col = rnd % colnum; 
+    var cell = document.getElementById(row + "_" + col); 
+    cell.mine = "●"; 
+    arr.splice(suffix, 1); 
+    } 
+    calcMineForAll(); 
+    } 
+    
+    // calculating mine number for each cell 
+    function calcMineForAll() { 
+    for(var i = 0; i < rownum; i++) { 
+    for(var j = 0; j < colnum; j++) { 
+    calcMine(i, j); 
+    } 
+    } 
+    } 
+    
+    // calculating mine number for given cell 
+    function calcMine(row, col) { 
+    var cell = document.getElementById(row + "_" + col); 
+    var nums = 0; 
+    
+    if(row > 0) { 
+    if(col > 0) { 
+    if(document.getElementById((row - 1) + "_" + (col - 1)).mine) //top left 
+    nums++; 
+    } 
+    if(col < colnum - 1) { 
+    if(document.getElementById((row - 1) + "_" + (col + 1)).mine) //top right 
+    nums++; 
+    } 
+    if(document.getElementById((row - 1) + "_" + col).mine) // top 
+    nums++; 
+    } 
+    if(row < rownum - 1) { 
+    if(col > 0) { 
+    if(document.getElementById((row + 1) + "_" + (col - 1)).mine) //bottom left 
+    nums++; 
+    } 
+    if(col < colnum - 1) { 
+    if(document.getElementById((row + 1) + "_" + (col + 1)).mine) //bottom right 
+    nums++; 
+    } 
+    if(document.getElementById((row + 1) + "_" + col).mine) // bottom 
+    nums++; 
+    } 
+    if(col > 0) 
+    if(document.getElementById(row + "_" + (col - 1)).mine) //left 
+    nums++; 
+    if(col < colnum - 1) 
+    if(document.getElementById(row + "_" + (col + 1)).mine) //right 
+    nums++; 
+    //if(typeof(cell.mine) == "undefined") 
+    cell.nums = nums; 
+    } 
+    
+    // count number of marked cell around given coordinate 
+    function countMarkNum(row, col) { 
+    var nums = 0; 
+    if(row > 0) { 
+    if(col > 0) { 
+    if(document.getElementById((row - 1) + "_" + (col - 1)).state == "mark") //top left 
+    nums++; 
+    } 
+    if(col < colnum - 1) { 
+    if(document.getElementById((row - 1) + "_" + (col + 1)).state == "mark") //top right 
+    nums++; 
+    } 
+    if(document.getElementById((row - 1) + "_" + col).state == "mark") // top 
+    nums++; 
+    } 
+    if(row < rownum -1) { 
+    if(col > 0) { 
+    if(document.getElementById((row + 1) + "_" + (col - 1)).state == "mark") //bottom left 
+    nums++; 
+    } 
+    if(col < colnum - 1) { 
+    if(document.getElementById((row + 1) + "_" + (col + 1)).state == "mark") //bottom right 
+    nums++; 
+    } 
+    if(document.getElementById((row + 1) + "_" + col).state == "mark") // bottom 
+    nums++; 
+    } 
+    if(col > 0) 
+    if(document.getElementById(row + "_" + (col - 1)).state == "mark") //left 
+    nums++; 
+    if(col < colnum - 1) 
+    if(document.getElementById(row + "_" + (col + 1)).state == "mark") //right 
+    nums++; 
+    return nums; 
+    } 
+    
+    // click the cell 
+    function clickMe(cell) { 
+    if(typeof(cell.state) == "undefined") { 
+    if (cell.mine == "●") { // if incaution touch the mine, game immediate over 
+    gameover(cell); 
+    return; 
+    } 
+    if (cell.nums > 0) { 
+    cell.state = "up"; 
+    statedNum++; 
+    cell.className = "up"; 
+    cell.innerHTML = getColoredNum(cell.nums); 
+    
+    } else { 
+    var a = cell.id.split("_"); 
+    var row = parseInt(a[0]); 
+    var col = parseInt(a[1]); 
+    disclose(row, col); 
+    } 
+    isWin(); 
+    } 
+    } 
+    
+    // touch the mine, game over 
+    function gameover(element) { 
+    for(var i = 0; i < rownum; i++) { 
+    for(var j = 0; j < colnum; j++) { 
+    var cell = document.getElementById(i + "_" + j); 
+    if (cell.state == "up") continue; 
+    if (cell.mine) { 
+    if (typeof(cell.state) == "undefined") { 
+    cell.innerHTML = "●"; 
+    cell.style.cssText = "font-family:宋体"; 
+    } 
+    } 
+    } 
+    } 
+    element.state = "up"; 
+    element.innerHTML = "●"; 
+    element.style.cssText = "color:#AA0000;font-family:宋体;font-size:14px"; 
+    stopTick(); 
+    document.getElementById("message").innerHTML = "<font color='#DD0000'>Sorry, you lost the game!</font>"; 
+    } 
+    
+    // get colored number, difference number will be colored difference color 
+    function getColoredNum(nums) { 
+    var color; 
+    switch(nums) { 
+    case 1: color = "#0000EE"; break; 
+    case 2: color = "#00AA00"; break; 
+    case 3: color = "#990000"; break; 
+    case 4: color = "#FF0000"; break; 
+    case 5: color = "#550000"; break; 
+    case 6: color = "#550055"; break; 
+    case 7: color = "#223366"; break; 
+    default: color = "#000000"; 
+    } 
+    return "<font color=" + color + ">" + nums + "</font>"; 
+    } 
+    
+    
+    function disclose(row, col) { 
+    var cell = document.getElementById(row + "_" + col); 
+    if(cell && typeof(cell.mine) == "undefined" && typeof(cell.state) == "undefined") { 
+    cell.state = "up"; 
+    cell.className = "up"; 
+    statedNum++; 
+    if (cell.nums == 0) { 
+    if(row > 0) { 
+    disclose(row - 1, col); 
+    if(col > 0) // top left 
+    disclose(row - 1, col - 1); 
+    if(col < colnum -1) // top right 
+    disclose(row - 1, col + 1); 
+    } 
+    if(row < rownum - 1) { 
+    disclose(row + 1, col); 
+    if(col > 0) // bottom left 
+    disclose(row + 1, col - 1); 
+    if(col < colnum -1) // bottom right 
+    disclose(row + 1, col + 1); 
+    } 
+    if(col > 0) 
+    disclose(row, col - 1); // left 
+    if(col < colnum -1) 
+    disclose(row, col + 1); // right 
+    } else { 
+    cell.innerHTML = getColoredNum(cell.nums); 
+    } 
+    } 
+    } 
+    
+    // mark or unmark a cell 
+    function markMe(cell) { 
+    if (cell.state == "mark") { 
+    cell.innerHTML = "&nbsp;"; 
+    cell.state = undefined; 
+    statedNum--; 
+    } else if (typeof(cell.state) == "undefined") { 
+    cell.innerHTML = "F"; 
+    cell.state = "mark"; 
+    statedNum++; 
+    isWin(); 
+    } 
+    } 
+    
+    // determine the game is win 
+    function isWin() { 
+    if (statedNum == totalCellNum) { 
+    document.getElementById("message").innerHTML = "<font color='#008800'>Congratulations, you won the game!</font>"; 
+    stopTick(); 
+    } 
+    } 
+    
+    // when left and right key down 
+    function doubleClick(cell) { 
+    if(typeof(cell.state) == "undefined") { 
+    clickMe(cell); 
+    return; 
+    } 
+    
+    var a = cell.id.split("_"); 
+    var row = parseInt(a[0]); 
+    var col = parseInt(a[1]); 
+    if (cell.innerHTML.indexOf(">" + countMarkNum(row, col) + "</") > -1) { 
+    if(row > 0) { 
+    clickMe(document.getElementById((row - 1) + "_" + col)); 
+    if(col > 0) // top left 
+    clickMe(document.getElementById((row - 1) + "_" + (col - 1))); 
+    if(col < colnum -1) // top right 
+    clickMe(document.getElementById((row - 1) + "_" + (col + 1))); 
+    } 
+    if(row < rownum - 1) { 
+    clickMe(document.getElementById((row + 1) + "_" + col)); 
+    if(col > 0) // bottom left 
+    clickMe(document.getElementById((row + 1) + "_" + (col - 1))); 
+    if(col < colnum -1) // bottom right 
+    clickMe(document.getElementById((row + 1) + "_" + (col + 1))); 
+    } 
+    if(col > 0) 
+    clickMe(document.getElementById(row + "_" + (col - 1))); // left 
+    if(col < colnum -1) 
+    clickMe(document.getElementById(row + "_" + (col + 1))); // right 
+    } 
+    } 
+    
+    // process all mouse key down event 
+    document.onmousedown = function() { 
+    var e = event ? event : arguments[0] ; 
+    var cell = e.srcElement ? e.srcElement : e.target; 
+    if(cell.parentNode.name == "cell") 
+    cell = cell.parentNode ; 
+    
+    if(cell.name == "cell") { 
+    if (e.button == 1) //left click 
+    clickMe(cell); 
+    else if (e.button == 2) //right click 
+    markMe(cell); 
+    else if (e.button == 3) //left and right click 
+    doubleClick(cell); 
+    } 
+    return true; 
+    } 
+    // --></script> 
+    
+    <style type="text/css"><!-- 
+    body { 
+    font-size:14px; font-family: verdana; 
+    } 
+    input { 
+    font-size:12px; padding: 0px; margin: 0px; 
+    } 
+    table {border: 2px solid #6E6560;} 
+    td { 
+    height:19px; width:20px; 
+    font-family: Arial Black; 
+    text-align: center; 
+    padding-top:3px; 
+    font-size: 12px; 
+    cursor:default; 
+    border-left: 2px solid #D5D3D0; 
+    border-top: 2px solid #D5D3D0; 
+    border-right: 2px solid #6E6560; 
+    border-bottom: 2px solid #6E6560; 
+    } 
+    .up { 
+    border-right: 2px solid #F6F3F0; 
+    border-bottom: 2px solid #F6F3F0; 
+    background:#F6F3F0; 
+    } 
+    --></style><style type="text/css" bogus="1">body { 
+    font-size:14px; font-family: verdana; 
+    } 
+    input { 
+    font-size:12px; padding: 0px; margin: 0px; 
+    } 
+    table {border: 2px solid #6E6560;} 
+    td { 
+    height:19px; width:20px; 
+    font-family: Arial Black; 
+    text-align: center; 
+    padding-top:3px; 
+    font-size: 12px; 
+    cursor:default; 
+    border-left: 2px solid #D5D3D0; 
+    border-top: 2px solid #D5D3D0; 
+    border-right: 2px solid #6E6560; 
+    border-bottom: 2px solid #6E6560; 
+    } 
+    .up { 
+    border-right: 2px solid #F6F3F0; 
+    border-bottom: 2px solid #F6F3F0; 
+    background:#F6F3F0; 
+    }</style> 
+    
+    <html> 
+    <body oncontextmenu="return false" onselectstart="return false"> 
+    <div align="center"> 
+    <form name="mineform"> 
+    Row: <input type="text" name="rownum" size="5" value="15"/> 
+    Column: <input type="text" name="colnum" size="5" value="20"/> 
+    Mine Number: <input type="text" name="minenum" size="5" value="30"/> 
+    <input type="button" value=" Start " name="start" onclick="init()"/> 
+    Elapsed Time: <span id="elapse" style="width:30px;font-family:Arial Black" align="right"></span> 
+    </form> 
+    
+    <p></p> 
+    <div id="workarea"></div> 
+    <p></p> 
+    <p></p> 
+    <div id="message" style="font-family:Arial Black;font-size:16px" style="font-family:Arial Black;font-size:16px"></div> 
+    </div> 
+    </body> 
+    </html>

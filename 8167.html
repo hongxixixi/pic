@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap outer">
+        <div class="box">
+            <span class="span inner">
+                <p class="box"></p>
+            </span>
+        </div>
+    </div>
+    <script>
+        var arr = getClassName('box');
+        function getClassName(classname){
+            var allElem = document.getElementsByTagName('*');
+            var ElemArr=[] ;       //有类名为参数的元素集合
+            for(var i=0;i<allElem.length;i++){       //遍历每一个元素
+                if(allElem[i].className){
+                  var classNameArr = allElem[i].className.split(' ');
+                  for(var e=0;e<classNameArr.length;e++){
+                  if(classNameArr[e]==classname){
+                      ElemArr.push(allElem[i]);        //包含类名则push进数组
+                    }
+                  }
+                }
+            }
+            return ElemArr;
+        }
+      //  console.log(navigator.userAgent);   //返回是移动端还是pc端，什么浏览器
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height:100%;
+            background:-webkit-radial-gradient(center center,600px 600px,rgba(244,23,234,0.2),rgba(0,0,0,0));
+            background-color:#000;
+            overflow: hidden; 
+        }
+        .wrap{
+            perspective: 1000px;
+        }
+        .box{
+            position: relative;
+            width:120px;
+            height:180px;
+            margin:200px auto;
+            transform-style: preserve-3d;
+            transform: rotateX(-10deg) rotateY(0deg);
+        }
+        .box img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform:rotateY(0deg) translateZ(0px);
+            -webkit-box-reflect: below 5px -webkit-linear-gradient(top,rgba(0,0,0,0) 40%,rgba(0,0,0,0.5) 100%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+                <img src="./img/1.png" alt="">
+                <img src="./img/2.png" alt="">
+                <img src="./img/3.png" alt="">
+                <img src="./img/4.png" alt="">
+                <img src="./img/5.png" alt="">
+                <img src="./img/6.png" alt="">
+                <img src="./img/1.png" alt="">
+                <img src="./img/3.png" alt="">
+                <img src="./img/4.png" alt="">
+                <img src="./img/5.png" alt="">
+                <img src="./img/6.png" alt="">
+        </div>
+    </div>
+    <script src='../js/jquery-3.3.1.js'></script>
+    <script>
+        var imgs = document.querySelectorAll('.box img');
+        var body = $(body);
+        init();
+        function init(){
+            var len = imgs.length;
+            var deg = 360/len;
+            for(var i=0;i<len;i++){
+                $(imgs[i]).css({
+                 transform:'rotateY(' + i * deg + 'deg) translateZ(350px)',
+                 transition:'transform 1s ' + (len - 1 - i)*0.1 + 's'
+            })
+         }
+         bindEvent();
+        }
+        function bindEvent(){
+            var body = $('body');
+            var box = $('.box');
+            var lastX,lastY,nowX,nowY,roX=-10,roY=0,distX,distY,timer;
+            body.on('mousedown',function(e){
+                clearInterval(timer);
+                var e = e||window.e;
+                lastX = e.clientX;
+                lastY = e.clientY;
+                body.on('mousemove',function(e){
+                    var e = e||window.event;
+                    nowX = e.clientX;
+                    nowY = e.clientY;
+                    distX = lastX - nowX;
+                    distY = lastY - nowY;
+                    roX += distY * 0.2;
+                    roY -= distX * 0.2;
+                    box.css({
+                        'transform': 'rotateX(' +roX+ 'deg) rotateY(' + roY  + 'deg)',
+                        'cursor': 'move'
+                    });
+                    lastX = nowX;
+                    lastY = nowY;
+                })
+            
+            body.on('mouseup',function(e){
+             body.off('mousemove');   //结束move的动作
+             clearInterval(timer);
+             timer=setInterval(function(){
+                distX *= 0.98;
+                distY*= 0.98;
+                roY -= distX * 0.2;
+                roX += distY * 0.2;
+                    box.css({
+                            'transform': 'rotateX(' + roX + 'deg) rotateY(' + roY  + 'deg)',
+                            'cursor': 'pointer'
+                        });
+                 if(Math.abs(roY ) < 0.1 && Math.abs(roX) < 0.1){
+                     clearInterval(timer);
+                 }
+                },10);
+               
+         })
+         return false;//取消鼠标默认事件
+        })
+    }
+
+        
+        
+    </script>
+</body>
+</html>

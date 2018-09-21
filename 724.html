@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .outer {
+        display:table; 
+        width:578px; 
+        overflow:hidden; 
+        background: #eee;
+        height: 342px;
+        }
+    .middle{
+        display:table-cell; 
+        vertical-align:middle;
+        margin-left:10px;
+        margin: 100px;
+        } 
+
+    /* 
+    .outer{position:relative;}
+    .middle{position: absolute; top: 50%;}
+    .inner{position: relative; top:-50%} */
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="middle">
+          <div class="inner">
+            CSS中的vertical-align属性只会对拥有valign特性的(X)HTML标签起作用，
+            但是在CSS中还有一个display属性能够模拟 table，所以我们可以使用这个
+            属性来让 div 模拟 table 就可以使用vertical-align了。注意，display:table和
+            display:table-cell的使用方法，前者必须设置在父元素上<br><br>
+
+            注意：虽然display：table解决了避免使用表格的问题，但有几个需要注意的：<br><br>
+            （2）display: table-row时margin、padding同时失效<br>
+            （3）display: table-cell时margin会失效<br><br>
+
+            利用table 可以解决：<br>
+            一、父元素宽度固定，想让若干个子元素平分宽度<br>
+            二、块级子元素垂直居中<br>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

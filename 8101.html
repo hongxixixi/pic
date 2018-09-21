@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div><p><p>11111</p></p></div>
+    <div><p><p>22222</p></p></div>
+    <div><p>333333</p></div>
+    <script>
+        var ps=document.querySelectorAll('p');
+        var divs=document.querySelectorAll('div');
+        // var arr1=p.slice(-2);   // p不是真正的数组不能使用数组方法
+        var arrp = Array.from(ps);  // 将 nodelist类数组变成真正的数组
+        var arr3 = arrp.slice(-2); // [p,p]
+        var arr4 = arrp.filter(function(data){  
+            return data.textContent>2;
+        })
+        let arrayLike = {
+            '0': 'a',
+            '1': 'b',
+            '2': 'c',
+            length: 3
+        };
+        // ES5的写法
+        var arr1 = [].slice.call(arrayLike); // ['a', 'b', 'c']
+        var arr2 = Array.from(arrayLike);
+
+        function fn(a,b,c){
+            let arr= Array.from(arguments).slice(1);   //Array.from 还可以将arguments转换
+            console.log(arr);      //
+        }
+        fn(1,2,3);
+
+        function hasCallback(dom,callfn){
+            var p = document.querySelector(dom);
+            console.log(p);
+            var child = p.childNodes;
+            console.log(child);
+        }
+        function callfn(){
+            return this.textContent;
+        }
+        hasCallback('p',callfn)
+    </script>
+</body>
+</html>

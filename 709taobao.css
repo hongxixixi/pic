@@ -1,0 +1,340 @@
+*{
+    margin:0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+}
+a{
+    cursor: pointer;
+}
+.navigater{
+    font-size:12px;
+    color:#3c3c3c;
+    background-color: #f3f3f3;
+    height: 35px;
+}
+.navigater::after{          /*清楚浮动*/
+    content:"";
+    display: block;
+    clear: both;
+}
+.nav{
+    width:1190px;
+    margin:0 auto;
+}
+.nav .nav-left{
+    float: left;  /*内部转换成 inline-block*/
+    width:500px;
+    line-height: 35px;     /*使单行文本垂直居中---使行高等于容器高度/设置margin */
+   /* margin-top:8px;  */
+}
+.nav .nav-right{
+    float: right;
+    width: 690px;
+    line-height: 35px; 
+   /* margin-top:8px;*/
+
+}
+
+.top{
+    padding-top:24px
+}
+.top .topwrapp>div{
+    float: left;
+}
+.top-left{
+    width: 190px;
+    height: 88px;
+    margin-left: 25px;
+    overflow: hidden;
+    padding-left: 85px;
+}
+.top-left a{
+    display: inline-block;
+    background:url(i/baob.png);
+    background-size: 100% 100%;
+    width:142px;
+    height: 0px;
+/* 使文字缩进大于a标签的距离，溢出部分隐藏 
+    或者让padding-top等于图片高度，溢出部分文字仍然隐藏，
+    padding不是内容，所以文字显示不出来
+    text-indent: 200px;
+    white-space: nowrap;   */
+    overflow: hidden;
+    padding-top:70px;
+    vertical-align: middle;
+}
+/*
+.top-left::before{
+    display: inline-block;
+    width: 142px;
+    height: 58px;
+}
+*/
+.top-nav{
+    width: 610px;
+    height: 34px;
+    padding-left: 8px;
+}
+.top-nav li{
+    float: left;
+    list-style-type: none;
+    padding: 3px;
+    margin: 1px;
+    color: #f40;
+    text-align: center;
+    width: 36px;
+    height: 22px;
+    line-height: 22px;
+    margin-right:4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.top-nav li:hover{
+    background-color: #f40;
+    color:#fff;
+    border-radius: 5px;
+}
+.search-left{
+    height: 38px;
+    overflow: hidden;
+    width:472px;
+    vertical-align: middle;
+    position: relative;
+    float: left;
+    border:2px solid #ff5000;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-right: none;
+}
+.search-in{
+    width:427px;
+    line-height:26px;
+    text-indent: 8px;
+    padding: 6px 0;
+    outline: 0;
+    background:#fff;
+    border:none;
+    text-align: left
+    
+}
+.search-input{
+    width: 630px;
+    margin-right: 74px;
+    overflow: hidden;
+    height: 42px;
+}
+.i{
+    z-index: 2;
+    font-size: 16px;
+    position: absolute;  /*此时父元素不定位的话 相对于文档定位*/
+    top:9px;
+    left:14px;
+    color:#666; 
+}
+.search-middle{
+    display: inline-block;
+    float:left;
+    position: relative;
+    border:1px solid black;
+    width: 80px;
+    height: 38px;
+    border:2px solid #ff5000;
+    border-left: none;
+    border-right: none;
+}
+.i1{
+    position: absolute;
+    display: inline-block;
+    top:8px;
+    left: 35px;
+}
+.search-right button{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 18px;
+    color:#fff;
+    background-color: #ff4022;
+    cursor: pointer;
+    height:42px;
+    border:none;
+    width: 76px;
+    padding:7px;
+    border-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family: arial,'Hiragino Sans GB',"\5b8b\4f53",sans-serif;
+}
+
+.top-middle-bottom{
+    float: left;
+    margin-right: 10px;
+    color: #ff5000!important;
+    cursor: pointer;
+    font-size: 12px;
+    padding-top: 7px;
+}
+.top-right{
+    width: 65px;
+    height:72px;
+    font-size: 12px;
+    text-align: center;
+    border:0.5px solid #eee;
+}
+.top-right span{
+    color: #ff4022;
+    padding: 2px;
+    display: inline-block;
+}
+.top-right a img{
+    width: 62px;
+    height:62px;
+}
+.topwrapp{
+    margin:0 auto;
+    width: 1190px
+}
+.nav-middle{
+    clear: both;   /*清除上面的浮动*/
+    width: 1903px;
+    height: 30px;
+    background-color: #ff9000;
+    margin-top:110px;
+
+}
+.nav-middle-wrapp{
+    width: 1190px;
+    margin: 0 auto;
+}
+.nav-middle h2{
+    width:190px;
+    height: 24px;
+    float: left;
+    font-size: 16px;
+    background: #ff5000;
+    padding-top:6px;
+    color:#fff;;
+}
+.nav-middle ul li{
+    float: left;
+    padding: 0 5px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 30px;
+    color:#fff;
+
+}
+.main-left-nav{
+    width: 920px;
+    height: 520px;
+    float: left;
+}
+.main-middle{
+    float: left;
+}
+.main-left{
+    width: 190px;
+    height: 521px;
+    float: left;
+    border: 1px solid #ff9000;
+    padding-top:8px;
+    border-top:0;
+}
+
+.main-nav{
+    width:1220px;
+    height: 632px;
+    margin: 0 auto;
+}
+.main-left span{
+    display: inline-block;
+    width: 189px;
+    height: 32px;
+    color:#666;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.main-middle-left{
+    width: 520px;
+    height: 522px;
+    border: 1px solid red;
+    float: left;
+    position: relative;
+}
+
+.main-middle-right{
+    width:160px;
+    height: 521px;
+    border: 1px solid red;
+    float: left;
+    margin: 5px;
+}
+.main-left-nav>div{
+    margin:0 8px;
+}
+
+
+.main-right{
+    width: 290px;
+    height: 630px;
+    border: 1px solid red;
+    float: left;
+}
+
+.main-bottom{
+    width:896px;
+    height: 90px;
+    border:1px solid red;
+    float: left;
+}
+
+.lunb{
+    width: 520px;
+    height: 280px;
+    overflow: hidden;
+    border: 1px solid red;
+    position: relative;
+}
+
+.lunb-li{
+    width:600%;
+    position: relative;
+}
+.lunb-li img{
+    float: left;
+}
+.lunb-i-left{
+    position: absolute;
+    top:25%;
+    left: 0;
+    width: 25px;
+    background: red;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.lunb-i-right{
+    position: absolute;
+    top:25%;
+    right: 0;
+    width: 25px;
+    background: red;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.pot{
+    position: absolute;
+    top: 90%;
+    left: 42%;
+}
+.pot span{
+    border: 8px solid grey;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.pot .spanover{
+    border: 8px solid yellow;
+}

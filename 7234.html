@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 18px;
+            padding: 0;
+        }
+        .divbox{
+            height: 200px;
+            width: 200px;
+            background: pink;
+        }
+        .divc{
+            height: 100px;
+            width: 100px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="divbox">
+        <div class="divc">
+
+        </div>
+    </div>
+    <script>
+        var divbox=document.getElementsByClassName('divbox')[0];
+            var width,
+                topD,
+                height;
+            //window.getComputedStyle---chrome 和 firefox兼容
+            topD=divbox.getBoundingClientRect().top;
+            height=divbox.getBoundingClientRect().height;
+            // console.log( divbox.currentStyle.width);  ---element.currentStyle 是IE独有的获取宽高的方法
+            console.log(topD+'---- '+height);
+            // element.getBoundingClientRect()---可以获取top、left、width、height四个属性
+    
+    </script>
+</body>
+</html>

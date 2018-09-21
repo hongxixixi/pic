@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-on:click='getMsg()' >{{msg}}</p>
+        <p v-text="msg">,,,,,,</p>
+        <p v-html="msg"></p>
+
+    </div>
+    <script src="vue2.5.16.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '<h1>我是一个大大的h1标题</h1>'
+            },
+            methods:{
+                getMsg:function(){
+                    this.msg = 'update';
+                }
+            },
+            beforeCreate:function (){
+                    console.log('before Create');
+              },
+            created:function() {
+                console.log('created');
+            },
+            beforeMount:function(){
+                console.log('beforeMount');
+            },
+            mounted:function(){
+                console.log('mount');
+            },
+            beforeUpdate:function(){
+                console.log('beforeUpdate');
+            },
+            updated:function(){
+                console.log('update');
+            }
+        })
+    </script>
+    <script>
+            var obj = {name:'myName'};
+            var arr = [1,2,3];
+            var str = '12343';
+            var str1 = str.slice(2,4);
+            var str2 = str.substr(2,3);
+            var str3 = str.substring(2,3);
+            console.log(str);
+            console.log(str1);
+            console.log(str2);
+            console.log(str3);
+        </script>
+</body>
+
+</html>

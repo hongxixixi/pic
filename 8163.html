@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 单线程，只有同步任务都完成了，主线程空了，才会在等待队列里面读取异步事件执行
+        (function fn() {  
+            console.log('A1');
+
+            setTimeout(function () {
+                console.log('B1');
+            })
+
+            console.log('C1');
+
+            setTimeout(function () {
+                console.log('D1');
+            })
+        }());
+
+            (function fn() {  
+            console.log('A');
+
+            setTimeout(function () {
+                console.log('B');
+            })
+
+            console.log('C');
+
+            setTimeout(function () {
+                console.log('D');
+            })
+        }());
+    </script>
+</body>
+</html>

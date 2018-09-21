@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>li元素的位置点击输出</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        window.onload=function(){
+            var uls=document.getElementsByTagName('li');
+            function count(){
+                var i,
+                    len=uls.length;
+                for(i=0;i<len;i++){
+                    (function (index){ 
+                    uls[index].onclick=function(){ 
+                    //这样实现不行，因为这里执行函数count时初始化每个onclick事件
+                    //把i作为一个参数赋进去，真正触发事件的时候执行函数，取i，此时i已经为4
+                        console.log(index);
+                        }
+                    }(i));
+                    //立即执行就把i在执行上下文里面固定了 
+                }
+            }
+            count();
+            // attachEvent,addEventListener
+            
+        }
+        //返回false ，阻止点击鼠标右键默认事件
+        document.oncontextmenu = function (e) {
+            console.log('a');
+            cancelHandler(e);
+          }
+        //封装一个取消默认事件
+        function cancelHandler(event){
+            if(event.preventDefault){
+                event.preventDefault();
+            }
+            else{
+                event.returnValue=false;
+            }
+        }
+
+    </script>
+</body>
+</html>

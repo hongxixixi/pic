@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        var img,count=0;
+        var timer = setInterval(function(){
+            count++;
+            if(count==3){
+                img = document.createElement('img');
+                var div = document.getElementsByTagName('div')[0];
+                img.src = 'https://ps.ssl.qhimg.com/sdmt/170_135_100/t019836ab7607706b63.jpg'
+                img.style.width=500+'px';
+                img.style.height=500+'px';
+                div.appendChild(img);
+                clearInterval(timer);
+            }
+            
+        },1000);
+
+
+    </script>
+</body>
+</html>

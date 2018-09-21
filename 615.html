@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /*   var str="abc";
+        str+=1;
+        console.log(str); //abc1
+        var test = typeof(str);
+        console.log(typeof(str));
+    if(test.length==6){
+        test.sign = "type的类型可能为string";
+    }
+    console.log(test.sign);
+  
+    function employee(name,code){
+        this.name="wangli";
+        this.code="A001";
+        console.log(name);
+        console.log(this.code);
+
+    }
+    var newemp = new employee("zhangming","A002");
+    document.write("姓名："+newemp.name+'</br>');
+    document.write("代号："+newemp.code+'</br>')
+
+     var x =1,y=z=0;
+     function add(n){
+         return n=n+1;  //返回一个数字，不是一个参数呀
+     }
+     y=add(x);
+     function add(n){
+         return n=n+3;
+     }
+     z=add(x);
+     console.log(x);
+     console.log(y);
+     console.log(z);
+    (function foo(x){
+        console.log(arguments);
+        return x;
+    }(1,2,3,4,5))
+    console.log(parseInt(3,2))  //把3作为二进制转换成十进制
+    function Car(){
+       // this.cname="carer";
+        this.momey="200000";
+        this.code="A001";
+    }
+    function bike(){
+        this.cname="biker";
+        this.momey="1000";
+        this.age="30";
+    }
+    Car.prototype.cname = "aaaa";
+    var car = new Car();
+    Car.prototype.cname = "bbbb";
+    car.prototype={
+        cname : 'cccc'
+    }
+    var obj = Object.create(null);
+    function Car (number){
+        size:number;
+    }
+    var car = new Car(2000);
+    var obj = {
+        name:'123',
+        age:123,
+        sex:"male",
+        weight:75
+    }
+    for(var prop in obj){
+        console.log(obj[prop]); 
+     //obj.prop会在底层转换成obj['prop'],即访问名字为prop的属性]
+    }
+    function a(){
+        console.log(this);
+    }
+    a();
+    var b = new a();
+    b();
+    var name="222";
+    var a={
+        name:"111",
+        say :function(){
+            console.log(this.name);
+        }
+    }
+    var fun=a.say;
+    fun();  //this->window :222
+    a.say();  //this->a :111
+    var b={
+        name:"333",
+        say:function(fun){
+            fun();
+        }
+    }
+    b.say(a.say); //this->b 但fun()的执行没有函数调用，走预编译环节
+    //有 点 调用才是改变this ，fun() 在里面外面执行都一样
+    b.say=a.say;
+    b.say();  //this->b:333
+    var arr=[1,4,3,5,6]
+    arr.sort(function(a,b){
+        if(a>b){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+        //return a-b;
+    });
+    arr.sort;
+    */
+    Array.prototype.unique=function(){      //对象属性值，哈希方法
+        var temparr=[],
+            obj={},
+            len=this.length,
+            i;
+        for(i=0;i<len;i++){
+            if(!obj[this[i]]){ 
+                obj[this[i]]='abc';  //这里最好是加上点确定的非0 非undifine的值 ，否则值为 0或undifine 下次循环取值仍会进来 
+                //达不到去重的效果
+                temparr.push(this[i]);
+            }
+        }
+        return temparr;
+    }
+    var arr=[1,2,4,5,2,4,1,4,5,0,0,0];  
+    var newarr=arr.unique();
+    </script>
+</body>
+</html>

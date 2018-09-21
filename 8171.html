@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='./js/jquery-3.3.1.js'></script>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        html{
+            height: 120%;
+            width: 100%;
+        }
+        .wrapper{
+            position: relative;
+            height: 150px;
+            width: 150px;
+            background: yellow;
+            float: left;
+            bottom: -110px;
+        }
+        .wrapper::before{
+            content:'';
+            position: absolute;
+            width: 2px;
+            height: 150px;
+            margin:2px;
+            background: green;
+        }
+        .box{
+            height: 60px;
+            width: 60px;
+            background: red;
+        }
+        .content{
+            height: 60px;
+            width: 60px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper"><div class="box"></div><p class="content"></p></div>
+    <script>
+        var box = document.getElementsByClassName('box')[0];
+        var wrapper = document.getElementsByClassName('wrapper')[0];
+        function reverseElem(elem){
+            var len = elem.childNodes.length;
+            for(let i=0;i<len;i++){
+                elem.appendChild(elem.childNodes[i]);
+            }
+        }
+
+        var obj = {
+            b:123
+        }
+        function showNum(){
+            for(var i=0;i<5;i++){
+                (function(i){
+                setInterval(function(){
+                    console.log(i);
+                    console.log(this.b);
+                },0)
+              }(i))
+            }
+            console.log(i+'  i')
+        }
+        // showNum();
+        showNum.call(obj);
+        for(var i=1;i<6;i++){       //还可以通过这种方式清除定时器 
+            clearInterval(i);
+        }
+        console.log('aaaa');
+        var wrap = document.getElementsByClassName('wrapper')[0];
+        var a = $('.box')[0].offsetParent
+        console.log(a);
+        wrap.setInterTime = function(){
+            var timer = setInterval(function(){
+                scrollBy(0,10);
+            },1000)
+        }
+
+        // var a = 234;
+        var timer;
+        function set(){
+            console.log(this+'11111');
+            timer = setInterval(function(){
+                this.a++;
+                console.log(this);
+            },1000)
+        }
+    //   set.call(obj)
+        wrap.onclick = function(){
+            clearInterval(timer);
+        }
+
+        function getScrollOffset(){
+        if(window.pageXOffset) {
+              return {
+                    x: window.pageXOffset,
+                   y: window.pageYOffset
+              }
+        }
+        return {
+              x: document.body.scollTop + document.documentElement.scrollTop,
+              y: document.body.scrollLeft + document.documentELement.scrollLeft
+        }
+  }
+
+      wrap.getElementOffset=function(){
+        var objData = this.getBoundingClientRect();
+         if(objData.width) { 
+              return {
+                    w1: objData.right,
+                    h1: objData.bottom 
+              }
+         }else {
+              return {            
+                    w: objData.width,
+                    h: objData.height
+              }
+        }
+  }
+
+
+        console.log(wrap.style.cssFloat='left');
+        console.log(window.getComputedStyle(wrap,null).backgroundColor);
+        addEvent(wrap,a,'click');
+         function a(e){
+                console.log(this);
+            }
+        function addEvent(ele,handle,type){
+            if(ele.addEventListener){
+                ele.addEventListener(type,handle);
+            }
+            else if(ele.attachEvent){
+                ele.attachEvent('on'+type,handle);
+            }
+            else{
+                ele['on'+type] = handle;
+            }
+        }
+        function delEvent(ele,handle,type){
+            if( ele.detachEvent){
+                console.log('222');
+                ele.detachEvent(type,handle);
+            }
+            else if(ele.removeEventListener){
+                console.log(ele.removeEventListener);
+                ele.removeEventListener(type,handle);
+            }
+        
+            else if(ele['on'+type]){
+                console.log('333');
+                ele['on'+type] = null; 
+            }
+        }
+    </script>
+</body>
+</html>

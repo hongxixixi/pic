@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src='./js/jquery-3.3.1.js'></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <style>
+        a,div,input{
+            margin:5px 0px;
+        }
+    </style>
+</head>
+<body>
+        <div class="container">
+            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span class="caret"></span>
+        </div>
+
+        <p class="text-muted bg-danger">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+        <p class="text-info bg-info">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+        <p class="text-danger">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+        <p class="text-primary">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+        <p class="text-warning">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+
+        <div class="container ">
+            <img src="i/gift7.jpg" alt="" class="img-rounded img-responsive center-block">
+        </div>
+
+        <ul class="nav nav-pills">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">SVN</a></li>
+          <li><a href="#">iOS</a></li>
+          <li><a href="#">VB.Net</a></li>
+          <li><a href="#">Java</a></li>
+          <li><a href="#">PHP</a></li>
+        </ul>
+        <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
+        <button type="button" class="btn btn-default btn-lg active">Button</button>
+        <a class="btn btn-default" role="button">这是一个仅用于触发某些功能的连接按钮</a>
+        <input type="text" placeholder="input按钮-primary" class="btn btn-primary">
+        <input type="text" placeholder="input按钮-info" class="btn btn-info">
+        <input type="text" placeholder="input按钮-danger" class="btn btn-danger">
+        <input type="text" placeholder="input按钮-success" class="btn btn-success">
+        <input type="text" placeholder="input按钮-warning" class="btn btn-warning">
+        <input type="text" placeholder="input按钮-link" class="btn btn-link">
+
+        <form class="form-horizontal">
+            <div class="col-sm-4">
+                    <div class="form-group">
+                            <input type="text" class="form-control" >
+                            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    </div>
+            </div> 
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control" >
+                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>
+            </div>
+
+           <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="第一个输入框">
+                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+            </div>
+            <div class="col-sm-4">
+                    <div class="form-group">
+                            <input type="text" class="form-control" >
+                            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    </div>
+            </div> 
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control" >
+                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>
+            </div>
+        
+        </div>
+        </form>
+
+
+        <div class="form-group">
+             <input type="text" class="form-control input-lg" placeholder="放大的input">
+             <input type="text" class="form-control input-default" placeholder="默认的input">
+             <input type="text" class="form-control input-sm" placeholder="缩小的input">
+        </div>
+
+        <form class="form-horizontal">
+                <div class="form-group has-success has-feedback">
+                  <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess3Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+
+                <div class="form-group has-success has-feedback">
+                  <label class="control-label col-sm-3" for="inputGroupSuccess2">Input group with success</label>
+                  <div class="col-sm-7">
+                    <div class="input-group">
+                      <span class="input-group-addon">@</span>
+                      <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
+                    </div>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
+                  </div>
+                </div>
+        </form>
+
+
+
+    <form action="" class="form-horizontal">
+        <div class="form-group has-success has-feedback">
+            <label for="" class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
+            <div class='col-sm-7'>
+                <input type="text" class="form-control " id='inputSuccess3' aria-describedby="inputSuccess3Status">
+                <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+                <span id="inputSuccess3Status" class="sr-only">(success)</span>
+           </div>
+        </div>
+
+        <div class="has-success has-feedback form-group">
+                <label for="" class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
+                <div class='col-sm-7'>
+                    <div class='input-group'>
+                    <span class="input-group-addon ">@</span>
+                    <input type="text" class="form-control " id='inputSuccess3' aria-describedby="inputSuccess3Status">
+                </div>
+                     <span class="form-control-feedback glyphicon glyphicon-ok"></span>
+               </div>  
+                     <span id="inputSuccess3Status" class="sr-only">(success)</span>
+            </div>
+    </form>
+</body>
+</html>

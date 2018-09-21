@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button class="but1">按钮</button>
+    <div class="div1"></div>
+    <script>
+        var but1=document.getElementsByClassName('but1')[0];
+        var div1=document.getElementsByClassName('div1')[0];
+        but1.onclick=function(){
+        Myanimate(div1,300);}
+        function Myanimate(ele,target){
+            var speed = target>ele.offsetLeft?10:-10;
+            clearInterval(ele.timer);
+            ele.timer=setInterval(function(){
+                if(Math.abs(target-ele.offsetLeft)<Math.abs(speed)){
+                    ele.style.left=target;
+                    clearInterval(ele.timer);
+                }
+                else{
+                    ele.style.left=ele.offsetLeft+speed+'px';
+                }
+            },100)
+
+        }
+    </script>
+</body>
+</html>

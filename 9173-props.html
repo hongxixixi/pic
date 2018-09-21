@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <component-child v-bind:parent-msg="msg"></component-child>
+    </div>
+    <template id='temp'>
+        <div @click='change()'>{{parentMsg}}</div>
+    </template>
+    <script>
+        var vue = new Vue({
+            el:'#app',
+            data:{
+                msg:'parentMsg...',
+            },
+            methods:{
+
+            },
+            components:{
+                componentChild:{
+                    template:'#temp',
+                    props:['parentMsg'],
+                    methods:{
+                        change:function(){
+                            this.parentMsg = 'acb';
+                        }
+                    }
+                }
+            },
+            
+        })
+    </script>
+</body>
+</html>

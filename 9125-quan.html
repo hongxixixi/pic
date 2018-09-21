@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            position: absolute;
+            height: 160px;
+            width: 360px;
+            z-index: 1000;
+            background:linear-gradient(to bottom right,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 55%,rgba(222,222,222,0.3) 56%,rgba(222,222,222,0.3)100%)
+        }
+        .stamp{
+            position: relative;
+            height: 160px;
+            width: 360px;
+            background: #F39B00;
+            /* 里面一个小圆渐变，全是白色，外面还有一层 */
+            background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 5px, #F39B00 5px) ;
+            background-size: 15px 15px;
+            background-position: 9px 3px;
+        }
+        .par ,.copy{
+            margin:0 9px;
+            background: #F39B00;
+            float: left;
+            box-sizing: border-box;
+            height: 160px;
+        }
+        .par{
+            width: 200px;
+            margin-right: 0px;
+        }
+        .copy{
+            width: 141px;
+            margin-left: 1px;
+            padding-left: 10px;
+            text-align: center;
+            vertical-align: text-bottom;
+        }
+        .stamp::before{
+            /* background-color:#F39B00; */
+            content: '';
+            position: absolute;
+            top:6px;
+            bottom:0;
+            left:6px;
+            box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);
+            /* right:10px; */
+            z-index: -1;
+            width: 10px;
+            height: 140px;
+        }
+        .stamp:after {
+            content: '';
+            position: absolute;
+            /* left: 10px; */
+            top: 10px;
+            right: 6px;
+            bottom: 10px;
+            width: 10px;
+            height: 140px;
+            box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);
+            z-index: -2;
+        }
+        .stamp .par sub{position: relative;top:-5px;color:rgba(255,255,255,.8);}
+        
+    </style>
+</head>
+<body>
+        <div class="container"></div>
+        <div class="stamp stamp01">
+            <div class="par">
+                <p>XXXXXX折扣店</p>
+                <sub class="sign">￥</sub>
+                <span>50.00</span><sub>优惠券</sub>
+                <p>订单满100.00元</p>
+            </div>
+            <div class="copy"><p>副券</p><p>2015-08-13<br>2016-08-13</p></div>
+            <i></i>
+        </div>
+
+</body>
+</html>

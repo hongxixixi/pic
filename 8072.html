@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = 'smyhvae';
+        var age = '26';
+        console.log('name:'+name+',age:'+age);   //传统写法
+        console.log(`name:${name},age:${age}`);  //ES6 写法
+
+
+
+        function fn(first,second,...args){   // ES6 的拓展运算符-- ... 参数数目不确定时使用
+            for(let i=0;i<args.length;i++){
+                // console.log(args[i]);
+            }
+            // rest 运算符的使用：前面有部分参数，后面的参数不知道具体数量 
+            console.log(args.length);     //输出四
+            console.log(arguments.length);  //输出六
+        // 此时args和arguments 并不相同，原型不同，里面的方法也不同
+        }
+        fn(1,2,3,4,5,6)
+
+        var arr=[1,3,4,2];
+         for(var val in arr){
+             console.log(val);
+         }
+        var arr2=[...arr];      //此时arr2会开辟新的内存，虽然我也不知道为什么
+        arr2.push('利用拓展运算符实现深复制');
+        console.log(arr);
+        console.log(arr2);
+        for(let i=0;i<arr.length;i++){
+            // let a=1;
+            // let a=2;   //let的变量不能重复定义，报错
+            // console.log(arr[i]);
+            
+            // let[a,b,c]=[1,2,3]
+            // console.log(a+' '+b+' '+c)
+
+            // let[a,b=true]=['aa',null];   //数组的解构赋值
+            // console.log(a+' '+b);
+
+            //与数组解构赋值不同，对象不需要严格按照顺序赋值
+            // let{foo,last}={last:'lastname',foo:'fooname'}   
+            // console.log(foo+' '+last);
+
+        //     let foo='123';
+        //    ( {foo}={foo:'345'} );  //直接给已经赋值的let 变量解构会报错，需要加圆括号
+        //     console.log(foo);
+
+           // const[a,b,c,d]='124adcdf'; 
+        //    let[a,b,c,d]='124adcdf';  // 字符串也可以被解构，此时字符串被转换成类似数组的对象
+        //     console.log(a);
+        //     console.log(b);
+        //     console.log(c);
+        //     console.log(d);
+        }
+        // console.log(i);
+        // const a='123';      //const必须赋值？？
+        // console.log(a);
+        // a='234';
+        // console.log(a);  //const的变量设置完不能修改
+
+
+
+        /*  apply和call、bind都可以改变this指向，但bind不会立即执行。而是返回函数
+        // var obj={
+        //     a:'name'
+        // }
+        // function fn(){
+        //     console.log(this.a);
+        //     return ;  //函数默认会返回undefine
+        // }
+        // console.log(fn.bind(obj)() );
+        
+
+
+        // var arr=[1,3,4,6,7,8,6]
+        // arr.forEach(function(item,index){
+        //     console.log('index:'+index+'   item:'+item);
+        // })
+        // var arr1=arr.map(function(item,index){  //返回新组合数组
+        //     return item+'aa';
+        // })
+        // var arr2=arr.filter(function(item,index){ //过滤器
+        //     return item>5;
+        // })
+        // console.log(arr1);
+        // console.log(arr2);
+        // console.log(arr.indexOf(6));
+        // console.log(arr.lastIndexOf(6));
+
+
+
+        /*  ES5 的set和get方法 get是读取属性的回调函数，set是读取，set的参数实参是修改赋予的数据   */
+        // var obj={
+        //     fristname:'first',
+        //     lastname:'last'
+        // }
+        // Object.defineProperties(obj,{
+        //     fullname:{
+        //         get:function(){
+        //            return this.fristname+'-'+this.lastname;
+        //        },
+        //         set:function(data){
+        //             var names=data.split('-');
+        //             this.fristname=names[0];
+        //             this.lastname=names[1];
+        //             console.log(data);
+        //        }
+        //     }
+        // })
+        // obj.fullname='full-name';
+        // console.log(obj.fristname);
+        // console.log(obj.lastname);
+        // console.log(obj.fullname);
+
+
+
+        // var obj1={
+        //     username:'name',
+        //     age:22
+        // }
+        // var obj2={
+        //     address:'guangz'
+        // }
+        // obj2=Object.create(obj1,{ sex: {
+        //     //给obj2添加新的属性`sex`。注意，这一行的冒号不要漏掉
+        //     value: '男',  //通过value关键字设置sex的属性值
+        //     writable: false,
+        //     configurable: false,
+        //     enumerable:false
+        //    }
+        // });
+        // console.log(obj2);
+    </script>
+</body>
+</html>

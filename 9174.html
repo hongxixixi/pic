@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div class="app">
+        <comp @parent-show = 'change'></comp>
+    </div>
+    <template id='myComp'>
+        <div @click='clickfn'>点击console</div>
+    </template>
+    <script>
+        var vue = new Vue({
+            el:'.app',
+            methods:{
+                change:function(){
+                    console.log('this is father method');
+               } 
+            },
+                components: {
+                comp:{
+                    template:'#myComp',
+                    data() { // 子组件的data
+                        return {
+                            // content: '子组件私有的数据 content'
+                        }
+                    },
+                    methods:{
+                        clickfn(){
+                            this.$emit('parent-show');
+                            }
+                        }
+                    }
+                }
+            
+        })
+    </script>
+</body>
+</html>

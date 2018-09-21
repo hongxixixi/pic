@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        　　var o = {
+        　　　　p: 1,
+        　　　　p: 2
+        　　};
+        function fn(a,b){    //严格模式下，参数名不能重复
+            //var a;  
+            arguments[0]=3;  
+            // arguments++;  //严格模式下，不允许对arguments赋值操作
+            // this.a=2   
+            a=6;            //严格模式下，arguments不再跟踪参数的变化
+            console.log(arguments[0]+ ' a:'+a);
+            // return arguments.callee();   //严格模式下不可以用callee调用自己
+        }
+        new fn(2,3);   //严格模式下 构造函数不使用new this会报错，并不能指向window
+
+        var a='aaaaa';
+        // delete a;    //严格模式下会报错，不允许删除没有设置configurable为true的变量
+        console.log(a);
+
+        var obj={
+            get val(){return 1},
+            p: 1,
+　　　　     p: 2
+
+        };
+        Object.defineProperty(obj,'v',{value:1,writable:false})
+        Object.preventExtensions(obj);// 禁止拓展对象属性
+        // obj.v='2';  //严格模式下，对只读属性赋值会报错，标准模式下只是忽略
+        console.log(obj.v);
+        // obj.val=3;  //严格模式下，给通过getter读取的属性赋值会报错
+        // obj.ext='拓展'; // 严格模式下，给禁止拓展的对象添加属性报错
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js" ></script>
+</head>
+<body>
+    <div ref='myTitle' id='app' v-on:click="show">aaaa
+    <login-com ref="childref">
+    </login-com>
+</div>
+    <script>
+        //在父组件拿到子组件元素后，就可以使用子组件的数据和方法
+        var vm=new Vue({
+            el:'#app',
+            data:{},
+            methods:{
+                show:function(){
+                    console.log(this.$refs.myTitle.innerText);  //可以通过设置ref查找dom元素，this.this.$refs.xxx 
+                    console.log(this.$refs.childref.myData); 
+                    console.log(this.$refs.childref.showMethods()); 
+                }
+            },
+            components:{
+                'login-com':{
+                    template:"<h1>登录组件</h1>",
+                    data(){
+                        return {
+                            myData:'子组件的数据'
+                        }
+                    },
+                    methods:{
+                        showMethods(){
+                            console.log('调用自组件的methods')
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

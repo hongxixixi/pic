@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js" ></script>
+</head>
+<body>
+    <!-- <div id="app">
+        <input type="text" v-on:keyup="changeName">
+        output:{{ name }}
+
+        <input type="text" v-on:keyup.space.enter="name=$event.target.value">
+        output:{{ name }}
+
+        <form action="" >
+            <input type="submit">
+        </form>
+    </div> -->
+    <div id="app">
+        <p v-if="items>10">{{items}}个现货</p>
+        <p v-else-if="items>1">所剩不多了</p>
+        <p v-else>没有库存了</p>
+    </div>
+    <script>
+        //vue指令---操作dom
+        new Vue({
+            el:"#app",
+            data:{
+                items:11
+            }
+        })
+    </script>
+</body>
+</html>

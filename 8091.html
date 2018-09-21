@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr1 = [0, 1, 2];
+        var arr2 = [3, 4, 5];
+        arr1.push(arr2);  //将arr2作为一个整个数组加入
+// 此时在arr1对象里，将arr2的数组内容拆解开来作为参数加入到arr1
+        Array.prototype.push.apply(arr1,arr2);
+
+
+
+        // 尾调用递归事件
+            // function Fibonacci2(n,ac1=1,ac2=1){
+            //     if(n<=1)return ac2;
+            //     return Fibonacci2(n-1,ac2,ac1+ac2);
+            // }
+
+
+        // function tailFactorial(n, total=1) {
+        // if (n === 1) return total;
+        // return tailFactorial(n - 1, n * total);
+        // }
+        // tailFactorial(5);
+        // function factorial(n) {
+        // return tailFactorial(n, 1);
+        // }
+
+        // factorial(5) // 120
+
+
+
+        // 1、在用了默认值、扩展运算符、解构参数的情况下，es6不允许用严格模式
+        // 2、函数的lenght返回的是形参的长度个数，但不算扩展运算符中的,也不算有默认值的
+        //  function fn(a=2,b=1,...rest){
+        //     console.log(arguments.length);
+        //     console.log(fn.length);
+        // };
+        // fn(1,2,3);
+    </script>
+</body>
+</html>

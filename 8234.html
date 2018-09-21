@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='./js/jquery-3.3.1.js'></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <style>
+        .container{
+            position: absolute;
+            top:100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>   <div class="container">
+        <a role="button" tabindex="1" class="btn btn-default " data-trigger='focus' data-animation="true" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                Popover on 左侧
+        </a>
+              
+              <button type="button" class="btn btn-default" data-container="body" data-animation="true"  data-toggle="popover" data-placement="top" data-trigger='hover'  data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                Popover on 顶部
+              </button>
+              
+              <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger='manual'  data-content="Vivamus
+              sagittis lacus vel augue laoreet rutrum faucibus.">
+                Popover on 底部
+              </button>
+              
+              <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                Popover on 右侧
+              </button>
+ 
+         <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">点我弹出/隐藏弹出框</button>
+         <!-- HTML to write -->
+        <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
+
+        <!-- Generated markup by the plugin -->
+        <div class="tooltip top" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">
+                Some tooltip text!
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-default col-md-6 col-xs-4" data-toggle="tooltip" data-placement="auto" title="Tooltip on left">Tooltip on left</button>
+
+            <button type="button" class="btn btn-default col-md-6 col-xs-4" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+
+            <button type="button" class="btn btn-default col-md-6 col-xs-4" data-toggle="tooltip" data-placement="auto" title="Tooltip on right">Tooltip on right</button>
+            
+            <button type="button" class="btn btn-default col-md-6 col-xs-4" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+            
+            <button type="button" class="btn btn-default col-md-6 col-xs-4" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
+    </div></div>
+    <script>
+        $(function () {
+            $(' .btn-default').tooltip();     //由于性能原因，手动初始化接口
+            $('[data-toggle="popover"]').popover();    //手动初始化
+            $('.container').click(function(){
+                // $('[data-trigger="hover"]').popover('destroy');
+                $('[data-trigger="manual"]').popover('toggle');
+                $('[data-trigger="focus"]').popover('show');
+            })
+            $('[data-trigger="manual"]').on('shown.bs.popover',function(){
+                console.log('hover');
+            })
+        })
+    </script>
+</body>
+</html>

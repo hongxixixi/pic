@@ -1,0 +1,96 @@
+html,body,div{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font: 14px "Lato", Arial, sans-serif;
+    min-width: 100%;
+    min-height: 100%;
+    color: #666;
+    background-color: #2d2d2d;
+}
+.container{
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container .outerBox{
+    position: relative;
+    width: 63%;
+    text-align: center;
+    clear: both;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.container .outerBox .box{
+    position: relative;
+    display: list-item;
+    width: 33.3333333%;
+    float: left;
+    overflow: hidden;
+    text-align: center;
+    perspective: 800px;
+}
+
+.container .outerBox .box .text-desc{
+    /* 脱离文档流之后，宽度也是相对上一个定位的元素 */
+    position: absolute;   
+    left: 50%;
+    margin: 0 -40%;      
+    width: 80%;
+    display: block;
+    float: left;
+    color: white;
+    height: 0;
+    overflow: hidden;
+    bottom: 0;
+}
+.container .outerBox .box:nth-child(1) .text-desc{
+    bottom: 30px; 
+}
+.container .outerBox .box:nth-child(2) .text-desc{
+    top: 0; 
+}
+.container .outerBox .box:nth-child(3) .text-desc{
+    top: 43%;
+    width: 0;
+    margin: 0;
+}
+.container .outerBox .box .text-desc{
+    transition: all 0.6s;
+}
+.container .outerBox .box img{
+    transition: 0.4s;
+}
+.container .outerBox .box:hover .text-desc{
+    height: 160px;
+}
+.container .outerBox .box:hover img{
+    opacity: 0.4;
+}
+.container .outerBox .box:nth-child(2):hover .text-desc{
+    width: 80%;
+    top: 43%;
+}
+.container .outerBox .box:nth-child(3):hover .text-desc{
+    width: 80%;
+    margin: 0 -40%; 
+}
+
+
+.container .outerBox .box:nth-child(4):hover img{
+    transform: rotateX(80deg);
+    transform-origin: left bottom;
+}
+.container .outerBox .box:nth-child(5):hover img{
+    transform: rotateX(80deg);
+    transform-origin: left bottom;
+}
+.container .outerBox .box:nth-child(6):hover img{
+    transform: rotateX(80deg);
+    transform-origin: left bottom;
+}
+.container .outerBox .box:nth-child(4):hover .text-desc{
+    height: 160px;

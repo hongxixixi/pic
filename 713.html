@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js" ></script>
+</head>
+<body>
+    <div id="app">
+            <!--{{ getFullName(firstName,lastName) }}     -- 会把它解析渲染 -->
+        电影名：{{movieTiTle}}
+        上映日期:{{date}}
+        新/旧电影:{{getMovie()}}
+        <div v-bind:title= 'movieTiTle'>hover me</div>
+    </div>
+    <script>
+        //vue指令语法： v-指令名字：+指令的参数 = 指令的表达式
+        var vm = new Vue({                      //构造了一个vue的实例
+            el: "#app",                //告诉html，操作哪段html代码
+            data:{
+                movieTiTle:"我不是药神",
+                date:'2018.07.05'
+            },
+            methods:{
+                getMovie:function(){
+                    return this.date>2015?"新电影":"旧电影"
+                }
+            }
+
+        });
+    
+    </script>
+</body>
+</html>

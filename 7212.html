@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js" ></script>
+    <style>
+        /* v-enter 【这是一个时间点】 是进入之前，元素的起始状态，此时还没有开始进入 */
+
+        /* v-leave-to 【这是一个时间点】 是动画离开之后，离开的终止状态，此时，元素 动画已经结束了 */
+
+        .my-enter,
+        .my-leave-to {
+            opacity: 0;
+            /* 在动画中加入位移 */
+            transform: translateX(80px); /* smyhvae提示：v-enter表示，一开始让DOM元素处于靠右80px的位置 */
+        }
+
+        /* v-enter-active 【入场动画的时间段】 */
+
+        /* v-leave-active 【离场动画的时间段】 */
+
+        .my-enter-active,
+        .my-leave-active {
+            transition: all 1s ease;   /*期间，设置过渡的属性：all表示所有的属性、时间为1秒、过渡的状态*/
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="button" @click="flag=!flag" value="toggle">
+        在transition这里指明name，再把上面的v-enter等指令换成name+enter 可以定义自己的动画样式类型
+        <transition name="my">
+         <p v-if="flag">这是一个p元素</p>
+        </transition>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                flag:false
+            }
+        })
+    </script>
+</body>
+</html>

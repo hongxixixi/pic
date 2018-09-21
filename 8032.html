@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 100px;
+            height: 500px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <script>
+        var a = {},
+            b = {key:'b'};
+            c = {key:'c'};
+        a[b] = 123;
+        a[c] = 234;
+        console.log(a[b]);
+        // 用对象作为键值
+
+        window.onscroll=function(){
+            var json=srcoll();
+            console.log(json.top);
+            // console.log(srcoll().top);
+            // console.log(srcoll().left);
+        }
+        function srcoll(){
+            return{
+                'top':window.pageYOffset||document.body.scrollTop||document.documentElement.scrollTop,
+                'left':window.pageXOffset||document.body.scrollLeft||document.documentElement.scrollLeft
+            }
+        }
+    </script>
+</body>
+</html>

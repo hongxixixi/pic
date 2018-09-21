@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a=1;
+        function fn(){
+            var a=2;
+            // this.a=3;
+            this.method=function fnt(){}
+            console.log(a);     //2
+            console.log(this.a);     //3
+            console.log(this);     //3
+        }
+        // new fn();
+        console.log(a);     //2
+        fn();
+
+    // const preloadImage = function (path) {
+    //     return new Promise(function (resolve, reject) {
+    //         const image = new Image();
+    //         image.onload  = resolve;
+    //         image.onerror = reject;
+    //         image.src = path;
+    //     });
+    //     };
+    //     var promise=preloadImage('http://image.so.com/v?src=360pic_strong&z=1&i=0&cmg=981ab3fbddd93dc6d44458022e37f8ea&q=%E5%BB%B6%E7%A6%A7%E6%94%BB%E7%95%A5%E5%89%A7%E7%85%A7&correct=%E5%BB%B6%E7%A6%A7%E6%94%BB%E7%95%A5%E5%89%A7%E7%85%A7&cmsid=6fcdf427b22b86ae68a6646584f94f57&cmran=0&cmras=6&cn=0&gn=0&kn=50#multiple=0&gsrc=1&dataindex=39&id=c4fdedb676d81da7ad4cf4c012476448&currsn=0&jdx=39&fsn=110')
+    //     promise.then(
+    //         ()=>{console.log('value')}
+    //     ).catch(()=>{console.log('error')})
+    </script>
+</body>
+</html>

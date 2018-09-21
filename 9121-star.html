@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body html{
+            padding: 0;
+            margin:0;
+            position: relative;
+        }
+        /* input:checked~label ---- 选择input：checked之后的每一个label */
+        fieldset{
+            position: relative;
+            width:150px;
+        }
+        label{
+            position: relative;
+            width: 30px;
+            height: 30px; 
+            float: right;
+            background-image: url('./chen/images/icons-checkmark.png');
+        }
+        input{
+            position: absolute;
+            opacity: 0;
+        }
+        .starability-checkmark>input:checked~label, .starability-checkmark>input:focus~label, .starability-checkmark>input:hover~label {
+            background-position: 0 -30px
+        }
+    </style>
+</head>
+<body>
+    <section>
+        
+        <h3>选择框效果</h3>
+        <div class="container" >
+            <form action="">
+                <fieldset class="starability-checkmark">
+                    <legend>Basic star rating</legend>
+            
+                    <input type="radio" id='star1' name='select'>
+                    <label for="star1"></label>
+
+                    <input type="radio" id='star2' name='select'>
+                    <label for="star2"></label>
+
+                    <input type="radio" id='star3' name='select'>
+                    <label for="star3"></label>
+
+                    <input type="radio" id='star4' name='select'>
+                    <label for="star4"></label>
+                    
+                    <input type="radio" id='star5' name='select'>
+                    <label for="star5"></label>
+            </fieldset>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        position: relative;;
+    }
+    #div1{
+        width: 0px;
+        height: 0px;
+        border-left: 100px solid yellow;
+        border-right:100px solid white;
+        border-top:100px solid white;
+        border-bottom: 100px solid white;
+    }
+    #div2{
+        position: relative;
+        width:200px;
+        height: 200px;
+        background:gray; 
+        /*-webkit-border-image: url(i/back2.jpg) 10 10/55px 10 10/55px;*/
+        background:url(i/back2.jpg);
+        margin:-15px 15px 15px -15px;
+        left:45%;
+        }
+        img{
+            width:100px;
+            position: relative;
+            height: 100px;
+            border:1px solid #a0a0a0;
+            padding: 3px;
+            box-shadow: 3px 3px 6px #666;
+            left: 45%;
+        }
+        .alert{
+            background: #000;
+            border-radius: 2em;
+            opacity: 0.8;
+            filter:alpha(opacity=80);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div id='div2'></div>
+    <img src="i/back2.jpg" alt="">
+    <script>
+        window.onload=function(){
+          console.log(alert);
+            window.alert=alert;
+            function alert() {
+                console.log('a');
+              }
+ /*    
+             console.log(alert);
+             window.alert=function alert(){
+                console.log('a');
+                }
+   */         
+        }
+    </script>
+</body>
+</html>

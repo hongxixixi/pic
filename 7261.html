@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+<section>
+    <div id="div0"> div0</div>
+    <div id="div1"> div1</div>
+    <div id="div2"> div2</div>
+    <div id="div3"> div3</div>
+    <div id="div4"> div4</div>
+</section>
+<script>
+        window.onload = function () {
+            function Person(name, age) {
+        this.name = name
+        this.age = age
+        this.setName = function (name) {
+            this.name = name
+        }
+    }
+
+    var p1 = new Person('Tom', 12)
+    p1.setName('Jack')
+    console.log(p1.name, p1.age)
+    console.log(p1 instanceof Person)
+
+    function Student(name, price) {
+        this.name = name
+        this.price = price
+    }
+
+    var s = new Student('Bob', 13000)
+    console.log(s instanceof Student)
+
+    var p2 = new Person('JACK', 23)
+    console.log(p1+' '+p2)
+
+            // var myDiv = document.getElementsByTagName('div');
+            // for (var i = 0; i < myDiv.length; i++) {
+            //     myDiv[i].onclick = (function (i) {
+            //         return function a(){
+            //         console.log(i);
+            //         console.log(this.id);
+            //         }
+            //     })(i)
+            // }
+        //     var p = new Object()
+        //     // 再动态添加属性/方法
+        //     p.name = 'Tom'
+        //     p.age = 12
+        //     p.setName = function (name) {
+        //         this.name = name
+        //     }
+        //     //测试
+        //     console.log(p.name, p.age)
+        //     p.setName('Bob')
+        //     console.log(p.name, p.age)
+            
+        // }
+     //     function fn1() {
+    //   var a = 2
+
+    //   function fn2() {
+    //     a++;
+    //     var b=0;
+    //     b++;
+    //     console.log(a);
+    //     console.log('b:'+' '+b);
+    //   }
+    //   return fn2
+    // }
+
+    // var f = fn1();   //执行外部函数fn1，返回的是内部函数fn2
+    // f() // a:3 b:1      //执行fn2,使用的是同一个fn1的执行上下文，但是fn2的每次上下文执行都新建一个
+    // f() // a:4 b:1      //再次执行fn2
+
+    // var f1 = fn1();   //执行外部函数fn1，返回的是内部函数fn2
+    // f1() // a:3 b:1      //执行fn2,使用的是同一个fn1的执行上下文，但是fn2的每次上下文执行都新建一个
+    // f1() // a:4 b:1  
+        }
+    </script>
+   
+</body>
+</html>

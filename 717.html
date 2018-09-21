@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js" ></script>
+</head>
+<body>
+    <!-- <div id="app">
+         {{ value }}<input type="text" v-model.lazy="value" >
+        <div v-html="html"></div>
+        <div v-once>
+            {{message}} 
+        </div> 
+        <div>{{ num }}</div>
+        <div>{{ fullname }}</div>
+        <div>{{ fullname }}</div>
+        <button v-on:click="num++">add</button>
+        <button v-on:click="changename">change</button>
+    </div>   -->
+
+    <div id="app">
+        <input type="text" v-model="searchInfo">
+        <div v-if="showSearching">正在搜索...</div>
+        <ul>
+            <li v-for='item in result'>{{item}}</li>
+        </ul>
+    </div>
+
+
+    <script>
+        // v-bind + v-on =  v-model 双向数据绑定
+        // .number--将数据转换成数字类型  .lazy---失去焦点才更新
+        //计算属性：computed ---只有内部需要用到的数据改变才会自动重新渲染，而且会有缓存，
+        //         下一次用到的数据相同的情况不用重新执行
+        // watch: ----可以是异步操作，没有return返回值 跟computed不同
+        // new Vue({
+        //     el:"#app",
+        //     data:{
+        //        num:0,
+        //        firstname:"liu",
+        //        lastname:'li'
+        //     },
+        //     computed:{
+        //         fullname:{
+        //             get:function(){
+        //                 alert('执行了get');
+        //                 return this.firstname+"  "+this.lastname;
+        //             },
+        //             set:function(newvalue){
+        //                 var arr = newvalue.split(' ');
+        //                 this.lastname=arr[0];
+        //                 this.fullname=arr[1];
+        //             }
+        //         }
+
+        //     },
+        //     methods:{
+        //         changename:function () {
+        //             this.firstname="ming";
+        //           }
+        //     }
+        // })
+
+            new Vue({
+                el:"#app",
+                data:{
+                    searchInfo:"",
+                    showSearching:false,
+                    result:[]
+                },
+                watch:{
+                    searchInfo:function(query){
+                        this.showSearching=true;
+                        // =>箭头函数会利用父级的作用域
+                        setTimeout(()=>{
+                            this.result=["html","css","js"];
+                        },500)
+                    }
+                }
+            })
+
+    </script>
+</body>
+</html>

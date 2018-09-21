@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function decopy(obj){
+        var newObj = {}
+        for(var key in obj){
+             var type=typeof obj[key];
+             console.log(type);
+             switch(type){
+                 case 'string':
+                 case 'boolean':
+                 case 'number':
+                 case 'undefined':
+                    newObj[key]=obj[key];break;
+                 case 'function':
+                    newObj[key]=new obj[key];break;
+                 case 'object':
+                    if(obj[key] instanceof Array){
+                        var arr=[]
+                        // 遍历数组的四种方法： forEach/for...in/for...of/for
+                        obj[key].forEach(element => {
+                             if(typeof element=='object'){
+                                arr.push(decopy(element));
+                             }
+                             else if( typeof element =='function'){
+                                arr.push(decopy(element))
+                             }
+                             else{
+                                arr.push(element);
+                             }
+                        });
+                        newObj[key]=arr;
+                        // newObj[key]=[].concat(obj[key]);
+                    }
+                    else if(obj[key] instanceof Object){ 
+                        newObj[key]=decopy(obj[key]);
+                    }
+                    else {
+                        newObj[key]=null;
+                    }
+                    break;
+             }
+        }
+        return newObj;
+    }    
+    var obj = {
+        name:'copy',
+        bool:false,
+        arr:[1,2,function fn1(){},{a:1}],
+        Num:123,
+        Null:null,
+        und:undefined,
+        method:function(){
+            console.log(this.name);
+        },
+        childObj:{
+            childName:'child',
+            age:'8111222',
+            fn:function(){
+                console.log(this.age);
+            }
+        },
+        [Symbol('a')]:111   //Symbol 不能被 for...in 遍历
+    }
+    var newObj=decopy(obj);
+
+    var copyObj = JSON.parse(JSON.stringify(obj)); 
+    </script>
+</body>
+</html>

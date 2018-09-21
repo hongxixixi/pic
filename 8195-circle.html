@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            perspective: 1000px;
+        }
+        .wrapper{
+            width: 60%;
+			height: 100%;
+			position: relative;	
+			transform-style:preserve-3d;
+            margin-top:460px;
+            animation:yundong1 5s linear 0s infinite;
+            /* animation: yundong2 5s linear 0s; */
+        }
+        .grid{
+            width: 60px;
+			height: 80px;
+			background: yellowgreen;
+			opacity: 0.5;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -20px;
+			margin-left: -30px;
+        }
+        @-webkit-keyframes yundong1{
+            form{
+                transform: rotateX(0deg);
+            }
+            to{
+                transform: rotateX(360deg);
+            }
+        }
+        @-webkit-keyframes yundong2{
+            0%{
+				left:100px; 
+			}
+			/* 90%{
+				left: 150px;
+			} */
+			100%{
+				left: 700px;
+			}
+	
+            /* from{
+                left: 0px;
+            }
+            to{
+                left: 700px;
+            } */
+    	}
+    </style>
+</head>
+<body>
+    <div class="wrapper"></div>
+    <script src='js/jquery-3.3.1.js'></script>
+    <script>
+        var wrapper = $('.wrapper');
+        var arr = [12,10,8,6,4];       // 每层的div个数 
+        for(var i = 0; i < 5;i++){      // 上半球有五层
+            setDiv(i,arr[i]);
+            if(i==0) continue;          // 0层只设置一次 
+            setDiv(-i,arr[i]);
+        }
+        function setDiv(floor,count){
+            for(var i=0;i<count;i++){
+                $('<div class="grid"></div>').css({
+                    'transform':'rotateY('+(360/count)*i+'deg)rotateX('+floor*18+'deg)translateZ(300px)',
+                    'backgroundColor':'rgb('+parseInt(Math.random()*255)+','+parseInt(Math.random()*255)+','+parseInt(Math.random()*255)+')'
+                }).appendTo(wrapper);
+            }
+        }
+        $(document).mousemove(function(e){
+            wrapper.css("transform","rotateX(" + event.clientY / 10 + "deg) rotateY(" + event.clientX / 10 + "deg)");
+        })
+    
+    </script>
+</body>
+</html>

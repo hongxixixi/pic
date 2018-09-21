@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+    <style>
+    .box1{
+        width: 200px;
+        height: 200px;
+        background-color: green;
+        /* transition: all 2s linear; */
+    }
+    .box2{
+        width:300px;
+        height: 300px;
+        border:1px solid black;
+    }
+    </style>
+</head>
+<body>
+    <!--给 box1 增加拖拽的属性-->
+    <div class="box1" draggable="true"></div>
+    <div class="box2"></div>
+    <script>
+        var box1=document.getElementsByClassName('box1')[0];
+        var box2=document.querySelector('.box2');
+        box1.ondragstart=function(){
+            this.style.backgroundColor='pink';
+        }
+        box1.ondragend=function(){
+            this.style.backgroundColor='yellow';
+        }
+        box1.ondragleave=function(){
+            this.style.backgroundColor='orange';
+        }
+        box1.ondrag=function(){
+            this.style.backgroundColor='red';
+        }
+
+        box2.ondragenter=function(){
+            this.style.backgroundColor='red';
+        }
+        box2.ondragleave=function(){
+            this.style.backgroundColor='orange';
+        }
+        box2.ondragover=function(e){
+            // e.preventDefault();
+            this.style.backgroundColor='yellow';
+        }
+        box2.ondrag=function(){
+            this.style.backgroundColor='green';
+        }
+        box1.onclick=function(){
+            if( document.webkitIsFullScreen||document.mozFullScreen){
+                if(box1.cancleFullscreen){
+                    box1.cancleFullscreen();
+                }
+                else if(box1.webkitCancleFullScreen){
+                    box1.webkitCancleFullScreen();
+                }
+                else if(box1.mozCancleFullScreen){ 
+                    box1.mozCancleFullScreen();
+                }
+            }
+           else if (box1.requestFullscreen) {  //如果支持全屏，那就让元素全屏
+            box1.requestFullscreen();
+        } else if (box1.webkitRequestFullScreen) {
+            box1.webkitRequestFullScreen();
+        } else if (box1.mozRequestFullScreen) {
+            box1.mozRequestFullScreen();
+        }
+
+        }
+    </script>
+</body>
+</html>

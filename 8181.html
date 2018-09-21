@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        这是文本节点不是元素节点 
+        <div class="box"></div>
+        <div class="inner">
+            <p class = 'contend'></p>
+        </div>
+    </div>
+    <script>
+        var obj = {
+            name:'mycopy',
+            age:18,
+            objchild:{a:'aaaaa',b:[2,13,4]},
+            arr:[2,1,3,5,2]
+        }
+        function deepCopy(obj){
+            var copyed = Array.isArray(obj)?[]:{};
+              for(var i in obj){
+                if(typeof obj[i]=='object'){
+                    copyed[i]=deepCopy(obj[i]);
+                }
+                else{
+                   copyed[i] = obj[i];
+                }
+            }
+            return copyed;
+        }
+        var copy = deepCopy(obj);
+        console.log(copy);
+
+
+        //  try {
+        //     console.log(a);
+        // } catch (x) {
+        //     var x,y;      //这部分提升上去了
+        //     x=1;
+        //     y=2;
+        //     console.log(x);    //这里的 x 被catch里面的参数覆盖，相当于修改上面的参数，e参数只在catch内可见
+        //     console.log(y);
+        // }
+        //     console.log(x);    // undefined
+        //     console.log(y);
+
+
+        var elem = document.getElementsByClassName('wrapper')[0];
+        var p = document.getElementsByClassName('contend')[0];
+        Element.prototype.getChildren = function(){
+        var child = this.childNodes,
+            len = child.length,
+            obj = {
+              'length': 0,            // 使对象成为一个伪数组 
+              'push': Array.prototype.push
+        }
+       for(var val of child){
+              if(val.nodeType === 1) {
+                    obj.push(val);
+             }
+        }
+        return obj;
+  }   
+    </script>
+</body>
+</html>

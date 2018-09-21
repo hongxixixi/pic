@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 100%;
+            height: 200px;
+            background-image: linear-gradient(to right, yellow, green);
+        }
+        .left{
+            float: left;
+            height: 200px;
+            width: 300px;
+            background: yellow;
+        }
+        .right{
+            float: right;
+            height: 200px;
+            width: 300px;
+            background: green
+        }
+        .center{
+            height: 200px;
+            margin: 0 auto;
+            width: auto;
+            background: pink;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="left"></div>
+        <div class="right">111111111111</div>
+        <div class="center">111111111111111111111</div>
+  </div>  
+  <script>
+   var len=10;
+   function fn(){
+       console.log(this.len);
+    //    console.log(this);
+   }
+   obj={
+       len:8,
+       methods:function(fn){
+           fn();
+           arguments[0]();
+       }
+   }
+   obj.methods(fn,1);
+  </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='./js/jquery-3.3.1.js'></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .home-page{
+            background: #f2f2f2;
+        }
+        html{
+            height: 400%;
+        }
+        .header{
+            position: relative;
+            padding: 138px 0 0 0;
+            background: #222;
+            background-repeat: no-repeat;
+            text-align: center;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center 0;
+        }
+        .logotxt a{
+            color: #fff;
+            font-weight: 666;
+            font-size: 64px;
+        }
+        .logotxt{
+            margin-bottom: 30px;
+        }
+        .header h2{
+            color: #fff;
+            margin: 0 0 45px;
+            padding: 0 ;
+            font-weight: 100;
+            font-size: 34px;
+        }
+        .site-name span{
+            display: none;
+        }
+        .logoimg{
+            position: absolute;
+            /* 设置脱离文档流之后没有设置高宽撑不开元素，居中起不来作用，左右各距离 1%之后高度被撑开，元素居中 */
+            margin: 0 50%;
+            left: -44px;
+            /* right: 0;     
+            left: 0;*/
+            bottom:-58px; 
+        }
+        .logoimg a{
+         background-color: transparent;
+         border:none;    
+        }
+        .header .logoimg .thumbnail{
+            width: 88px;
+        }
+        .post-featured-image .thumbnail{
+            border:0;
+            padding: 12px;       
+        }
+        .main{
+            margin-top:90px;
+        }
+        .post{
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+        }
+        .main .loaded img{
+            width: 531px;
+            height: 332px;
+        }
+        .post-title{
+            position: absolute;
+            bottom:6px;
+            font-size: 24px;
+            text-align: center;
+            left: 0;
+            right: 0;
+        }
+        .post-title a{
+            color: #777;
+        }
+        .pagination{
+            position: relative;
+            width: 100%;
+            text-align: center;
+            left: 0;
+            right: 0;
+        }
+        .pagination .newer-posts{
+            position: absolute;
+            left: 10px;
+        }
+        .pagination .older-posts{
+            position: absolute;
+            right: 10px;
+        }
+    </style>
+</head>
+<body class="home-page">
+
+        <div class="header" style="background-image: url(http://image.youzhan.org/d/dd/2de797545de56274f03a5920eb3a1.jpg)">
+            <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                                <div class="logotxt"><h1><a href="http://www.youzhan.org">Bootstrap</a></h1></div> 
+                                <h2 class="site-name">优站精选<span>www.YouZhan.org</span></h2>
+                        </div>
+                    </div>
+            </div>
+
+              <div class="logoimg">
+                <a  class="thumbnail loaded" href="http://www.youzhan.org" title="Bootstrap 优站精选"><img class="img1" src="http://image.youzhan.org/e/35/22ccaf4c24ef690f7767e6a3ba5f0.png" alt="Bootstrap 优站精选" width="78"></a>
+             </div>
+
+        </div>
+
+
+         <main class="main" role='main'>
+            <div class="container">
+                <div class="row" id='post-list'>
+
+                        <div class="col-xs-12 col-md-6">
+                                <article class="post">
+                                    <h2 class="post-title">
+                                            <a href="http://web.tanzhouedu.com/index/keCourse04.html" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', '前端免费公开课'])" target="_blank">前端免费公开课</a>
+                                    </h2>
+                                    <div class="post-featured-image">
+                                            <a class="thumbnail loaded" href="http://web.tanzhouedu.com/index/keCourse04.html" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', '前端免费公开课'])" target="_blank">
+                                                <img src="http://image.youzhan.org/d/ee/a8dc9138ba9901c3efba83f60f818.jpg" width="700" height="438" alt="前端免费公开课" onload="imgLoaded(this)">
+                                             </a>
+                                    </div>     
+                                </article>
+                            </div>
+
+
+                    <div class="col-xs-12 col-md-6">
+                        <article class="post">
+                            <h2 class="post-title">
+                                <a href="https://www.byton.com/" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', 'Byton'])" target="_blank">Byton</a>
+                            </h2>
+                            <div class="post-featured-image">
+                                <a class="thumbnail loaded" href="https://www.byton.com/" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', 'Byton'])" target="_blank">
+                                  <img src="http://image.youzhan.org/3/37/cf6b79c015e10e6a9c98622b4aced.png?x-oss-process=imgalias/thumb" width="701" height="438" alt="Byton" onload="imgLoaded(this)">
+                                </a>
+                            </div>     
+                        </article>
+                    </div>
+                    
+                    <div class="col-xs-12 col-md-6">
+                            <article class='post'>
+                                <h2 class="post-title">
+                                    <a href="https://www.jekyll.com.cn" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', 'Jekyll'])" target="_blank">Jekyll</a>
+                                </h2>
+                                <div class="post-featured-image">
+                                    <a class="thumbnail loaded" href="https://www.jekyll.com.cn" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', 'Jekyll'])" target="_blank">
+                                        <img src="http://image.youzhan.org/2/ee/6f8bba4cb328d2db91bb14a5b6077.png?x-oss-process=imgalias/thumb" width="700" height="438" alt="Jekyll" onload="imgLoaded(this)">
+                                     </a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6">
+                                <article class="post tag-foreign-website tag-bootstrap-v3">
+                                        <h2 class="post-title">
+                                            <a href="https://vi.ai/" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', 'vi'])" target="_blank">vi</a>
+                                        </h2>
+                                        <div class="post-featured-image">
+                                            <a class="thumbnail loaded" href="https://vi.ai/" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', 'vi'])" target="_blank">
+                                              <img src="http://image.youzhan.org/8/f4/d8ece1342920b4388c8174d349925.png?x-oss-process=imgalias/thumb" width="701" height="438" alt="vi" onload="imgLoaded(this)">
+                                            </a>
+                                        </div>   
+                                    </article>
+                            </div>
+
+                     <div class="col-xs-12 col-md-6">
+                            <article class="post tag-foreign-website tag-bootstrap-v3">
+                                    <h2 class="post-title">
+                                        <a href="https://code.visualstudio.com/" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', 'Visual Studio Code'])" target="_blank">Visual Studio Code</a>
+                                    </h2>
+                                    <div class="post-featured-image">
+                                        <a class="thumbnail loaded" href="https://code.visualstudio.com/" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', 'Visual Studio Code'])" target="_blank">
+                                          <img src="http://image.youzhan.org/a/03/772cec53ab290841dd99c8d74b332.png?x-oss-process=imgalias/thumb" width="701" height="438" alt="Visual Studio Code" onload="imgLoaded(this)">
+                                        </a>
+                                    </div>
+                                    
+                                </article>
+                        </div>
+
+                    <div class="col-xs-12 col-md-6">
+                            <article class="post tag-foreign-website tag-bootstrap-v3">
+                                    <h2 class="post-title">
+                                        <a href="https://helphero.co/" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', 'HelpHero'])" target="_blank">HelpHero</a>
+                                    </h2>
+                                    <div class="post-featured-image">
+                                        <a class="thumbnail loaded" href="https://helphero.co/" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', 'HelpHero'])" target="_blank">
+                                          <img src="http://image.youzhan.org/8/34/102a079ba7c2d66ba4f1abbd0fdbd.png?x-oss-process=imgalias/thumb" width="701" height="438" alt="HelpHero" onload="imgLoaded(this)">
+                                        </a>
+                                    </div>
+                                    
+                                </article>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                            <article class="post tag-foreign-website tag-bootstrap-v3">
+                                    <h2 class="post-title">
+                                        <a href="https://www.crazycall.com/" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', 'CrazyCall'])" target="_blank">CrazyCall</a>
+                                    </h2>
+                                    <div class="post-featured-image">
+                                        <a class="thumbnail loaded" href="https://www.crazycall.com/" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', 'CrazyCall'])" target="_blank">
+                                          <img src="http://image.youzhan.org/d/9a/6b638248ca769019615b630b17645.png?x-oss-process=imgalias/thumb" width="701" height="438" alt="CrazyCall" onload="imgLoaded(this)">
+                                        </a>
+                                    </div>
+                                    
+                                </article>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                            <article class="post tag-foreign-website tag-bootstrap-v3">
+                                    <h2 class="post-title">
+                                        <a href="https://www.starbucks.com.cn/" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', '星巴克'])" target="_blank">星巴克</a>
+                                    </h2>
+                                    <div class="post-featured-image">
+                                        <a class="thumbnail loaded" href="https://www.starbucks.com.cn/" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', '星巴克'])" target="_blank">
+                                          <img src="http://image.youzhan.org/d/20/8305a1ae99bc794dafca1df04f9e6.png?x-oss-process=imgalias/thumb" width="701" height="438" alt="星巴克" onload="imgLoaded(this)">
+                                        </a>
+                                    </div>
+                                    
+                                </article>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                            <article class="post tag-foreign-website tag-bootstrap-v3">
+                                    <h2 class="post-title">
+                                        <a href="https://d2c.io/" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', 'D2C'])" target="_blank">D2C</a>
+                                    </h2>
+                                    <div class="post-featured-image">
+                                        <a class="thumbnail loaded" href="https://d2c.io/" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', 'D2C'])" target="_blank">
+                                          <img src="http://image.youzhan.org/2/78/c20a2eb2088577b7f4c29a00a2df3.png?x-oss-process=imgalias/thumb" width="701" height="438" alt="D2C" onload="imgLoaded(this)">
+                                        </a>
+                                    </div>
+                                    
+                                </article>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                            <article class="post tag-foreign-website tag-bootstrap-v3 tag-opensource-project">
+                                    <h2 class="post-title">
+                                        <a href="https://redash.io/" onclick="_hmt.push(['_trackEvent', 'titlelink', 'click', 'Redash'])" target="_blank">Redash</a>
+                                    </h2>
+                                    <div class="post-featured-image">
+                                        <a class="thumbnail loaded" href="https://redash.io/" onclick="_hmt.push(['_trackEvent', 'imagelink', 'click', 'Redash'])" target="_blank">
+                                          <img src="http://image.youzhan.org/4/02/aa854814ed291b78d28f85f384ce9.png?x-oss-process=imgalias/thumb" width="701" height="438" alt="Redash" onload="imgLoaded(this)">
+                                        </a>
+                                    </div>
+                                    
+                                </article>
+                    </div>
+                </div>
+            
+         <nav class="pagination">
+                <a class="newer-posts btn btn-default" role='button' href="/">← 上一页</a>
+             <span class="page-number">第 2 页/共 89 页</span>
+                <a class="older-posts btn btn-default" role='button' href="/page/3/">下一页 →</a>
+        </nav>
+     </div>
+     </main> 
+</body>
+</html>

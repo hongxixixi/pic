@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body {
+            height: 5000px;
+        }
+
+    img {
+            position: absolute;
+            padding: 10px 0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <img src="" width="100" height="100"/>
+    <script>
+        var img = document.getElementsByTagName('img')[0];
+        var timer = null;
+        document.onclick=function(){
+            clearInterval(timer);       //先清空一遍定时器
+            var targetx = 0;
+            var targety = 0;
+            var leaderx = 0;
+            var leadery = 0;
+            event = event||window.event;
+            targetx = (event.pageX||scroll().left+event.clientX)-30;   //鼠标点击的X坐标
+            targety = (event.pageY||scroll().top+event.clientY)-50;    //鼠标点击的Y坐标
+            leaderx = img.offsetLeft;       //目标元素的X坐标
+            leadery = img.offsetTop;        //目标元素的Y坐标
+             timer = setInterval(function(){
+                var stepX = (targetx-leaderx)/10;  
+                var stepY = (targety-leadery)/10;
+                if(Math.abs(stepX)<=1&&Math.abs(targetx-leaderx)<=1){  //最后一次 步子绝对值小于10，直接让目标元素等于鼠标位置
+                    img.style.left = targetx+ "px";
+                    img.style.top = targety + "px";
+                    clearInterval(timer); 
+                }
+                else{
+                    leaderx +=stepX;
+                    leadery +=stepY;
+                    img.style.left = leaderx + "px";
+                    img.style.top = leadery + "px";
+                }
+                
+            },30)
+        }
+    </script>
+</body>
+</html>

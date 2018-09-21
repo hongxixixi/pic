@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!-- 问：网页的head标签里面，表示的是页面的配置，有什么配置？
+答：字符集、关键词、页面描述、页面标题。（今后我们还能看见一些其他的配置：IE适配、视口、iPhone小图标等等）
+ -->
+
+    <!-- meta 可以设置关键字 字符集 页面描述 -->
+    <!-- <meta http-equiv="refresh" content="3;http://www.baidu.com"> -->
+      <!-- 三秒之后--自动跳转到百度 -->
+    <title>Document</title>
+    <style>
+    /* .childBox{
+        width:100px;
+        height: 100px;
+        background: red;
+    }
+    .fatherBox{
+        width: 200px;
+        height: 200px;
+        background: yellow;
+    } */
+</style>
+</head>
+<body link='red' alink='blue' vlink='green'>
+    <div class="fatherBox">
+        <a href="#">超链接</a>
+        <!-- <div class="childBox">
+        </div> -->
+    </div>
+
+    <!-- center标签，使内容居于浏览器中间 -->
+    <center>
+        <p>
+            简介简介简介简介简介简介简介简介
+      <!--  ./ 代表当前目录  ../ 代表向上一级的父路径 -->
+            <img src="./i/back.jpg" alt="" align='right'>
+            个人个人个人个人个人个人个人
+            <span>
+                <a href="">详细信息</a>
+                <a href="">购买</a>
+            </span>
+        </p>
+     </center>   
+       
+     <!-- dl dt dd 三个标签的运用 -->
+        <dl>
+            <dt>北京</dt>
+            <dd>国家首都，政治文化中心</dd>
+            <dd>污染很严重，PM2.0天天报表</dd>
+            <dt>上海</dt>
+            <dd>魔都，有外滩、东方明珠塔、黄浦江</dd>
+            <dt>广州</dt>
+            <dd>中国南大门，有珠江、小蛮腰</dd>
+        </dl>  
+        
+<!-- 通过label可以把文字和input的选择关联起来，在input里面
+    声明id 在label里用for指出input的id，任何表单元素都有label-->
+        <input type="radio" name="sex" id="nan" /> <label for="nan">男</label>
+        <input type="radio" name="sex" id="nv"  /> <label for="nv">女</label>
+   
+   <script>
+        // element.dispatchEvent 调用新注册的事件
+        var myEvent=new Event('newEvent');
+        var childBox=document.getElementsByClassName('childBox')[0];
+        childBox.addEventListener('newEvent',function(){
+            console.log('新事件');
+        })
+        childBox.dispatchEvent(myEvent);
+
+
+    /* --- DOM 事件流：先捕获阶段-目标阶段-冒泡阶段 */
+
+    //     var fatherBox=document.getElementsByClassName('fatherBox')[0];
+    //     var childBox=document.getElementsByClassName('childBox')[0];
+    //     window.addEventListener("click", function () {
+    //     alert("捕获 window");
+    // },true);
+
+    // document.addEventListener("click", function () {
+    //     alert("捕获 document");
+    // }, true);
+
+    // document.documentElement.addEventListener("click", function () {
+    //     alert("捕获 html");
+    // }, true);
+
+    // document.body.addEventListener("click", function () {
+    //     alert("捕获 body");
+    // },true );
+
+    // fatherBox.addEventListener("click", function () {
+    //     alert("冒泡 father");
+    //     event=event||window.event;
+    //     console.log(event.target);
+    //     console.log(event.currentTarget);
+    // }, false);
+// 
+//     childBox.addEventListener("click", function () {
+//         eventa=event||window.event;
+//         eventa.stopPropagation();
+//         // event.stopImmediatePropagation()---阻止同时注册的其他时间
+//         // eventa.stopImmediatePropagation();
+//         alert("冒泡 child-1111");
+//     }, true);    
+//     childBox.addEventListener("click", function () {
+//         eventa=event||window.event;
+//         console.log(eventa.target);
+//         console.log(eventa.currentTarget);
+//         eventa.stopPropagation();
+//         alert("冒泡 child-2222");
+//     }, true);    
+    </script>
+</body>
+</html>

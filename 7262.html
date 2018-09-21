@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            word-wrap:break-word;  
+            /* 允许长单词切换到下一行 */
+        }
+        .box{
+            position: relative;
+            left: 200px;
+            top: 100px;
+        }
+        .box input[type='text']{
+            width: 350px;
+            height: 26px;
+            font-size: 22px;
+            outline: none;
+            border-radius: 10px;
+            text-indent: 1em;
+        }
+        .box input[type='button']{
+            outline: none;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 26px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" >
+        <input type="button" value="搜索"> 
+    </div>
+    <script>
+    window.onload=function(){
+        var arr = ["a", "ab", "abc", "abcd", "aa", "aaa"];
+        var box = document.getElementsByClassName('box')[0];
+        var inp = box.children[0];
+        inp.onkeyup=function(){
+            if(box.children[2]){
+                box.removeChild(box.children[2]);
+            }
+            var arr1=[];
+            for(var i=0;i<arr.length;i++){
+               if(arr[i].indexOf(this.value)==0){
+                     arr1.push(arr[i]);
+               }
+             
+            }
+           var str='<ul>';
+            for(var i=0;i<arr1.length;i++){
+                str+='<li>'+arr1[i]+'</li>';
+            }
+            str+='</ul>'
+           var divcre = document.createElement('div');
+           divcre.innerHTML=str;
+           box.appendChild(divcre);
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+        body{
+            background-color: #333;
+        }
+        .wraper{
+            overflow: hidden; 
+        }
+        .box{
+            width: 62%;
+            margin: 220px auto;
+        }
+        .wraper ul li{
+            position: relative;
+            width: 110px;
+			height: 110px;
+            float: left;
+            text-align: center;
+            margin: 20px;
+            background: rgb(104, 183, 230);
+            border-radius: 50%;
+        }
+        .wraper ul li div{
+            transition:all 0.8s ease 0s;
+        }
+        .wraper ul li img{
+            display:block;
+            margin:10px auto;
+        }
+       .circle{
+           position: absolute;
+           height: 130px;
+           width: 130px;
+           left: -8px;
+           top:-10px;
+           border-radius: 50%;
+           border:2px solid pink;
+           box-sizing: border-box;
+           border-top:8px solid yellow;
+       }
+       .wraper ul li div:hover{
+        transform:rotateZ(360deg);
+       }
+       .wraper ul li:hover{
+           background: orange;
+       }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <ul class="box">
+            <li class="no1">
+                <div class="circle"></div>
+                <img src="chen/images/tb_1.png" alt="">
+                <span>学车流程</span>
+            </li>
+            <li class="no2">
+                <div class="circle"></div>
+                <img src="chen/images/tb_2.png" alt="">
+                <span>报名缴费</span>
+            </li>
+            <li class="no3">
+                <div class="circle"></div>
+                <img src="chen/images/tb_3.png" alt="">
+                <span>班车信息</span>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

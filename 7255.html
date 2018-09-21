@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box3{
+        width: 50px;
+        height: 50px;
+        background: pink;
+    }
+    .box2{
+        width: 150px;
+        height: 150px;
+        background: yellow;
+    }
+    .box1{
+        width: 250px;
+        height: 250px;
+        background: orange;
+    }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">
+            <div class="box3"></div>
+        </div>
+    </div>
+    <script>
+    var box3=document.getElementsByClassName('box3')[0];
+    var box2=document.getElementsByClassName('box2')[0];
+    var box1=document.getElementsByClassName('box1')[0];
+     //参数为true，代表捕获；参数为false或者不写参数，代表冒泡
+    box3.addEventListener("click", function () {
+        alert("捕获 child");
+    }, true);
+    box3.addEventListener("click", function () {
+        alert("铺货--- child");
+    }, false);
+
+    box2.addEventListener("click", function () {
+        alert("捕获 father");
+    }, true);
+    box2.addEventListener("click", function () {
+        alert("铺货--- father");
+    }, false);
+
+    box1.addEventListener("click", function () {
+        alert("捕获 grandfather");
+    }, true);
+
+    document.addEventListener("click", function () {
+        alert("捕获 body");
+    }, true);
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // var str = '123abc';
+    // console.log(str.length);
+    // console.log('123abc'.length);
+    // console.log('123abc'.split(''));
+    // console.log('123abc'.a=1);    
+    // console.log('123abc'.a);   
+
+    var arr1='john'.split('');
+    var arr2=arr1.reverse();
+    // reverse 会修改数组自己，此时arr1和arr2指向地址相同，是浅复制
+    // 所以在下面 push arr3后 输出arr1 和arr2 都相同
+    // push 是将 arr3 作为一整个数据加入，所以lenght为5
+    // slice输出最后一个数据，是arr3这个数组
+    var arr3='jones'.split('');
+    console.log(arr1);
+    console.log(arr2);
+    arr2.push(arr3);
+    console.log(arr1);
+    console.log(arr1.length+'  '+arr1);
+    console.log(arr1.length+'  '+arr1.slice(-1));
+    console.log(arr2.length+'  '+arr2);
+    console.log(arr3.length+'  '+arr3);
+
+    
+    </script>
+</body>
+</html>

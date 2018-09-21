@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 100.111px;
+            height: 100px;
+            padding: 100px;
+            border: 10px solid yellow;
+            margin:1.1111px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+            <div class="box2" style="left: 10.1111px"></div>
+    </div>
+
+    <script>
+        // offsetWidth 返回的是盒子的content padding border 的总宽
+        // offsetLeft 和 style.left 返回的是盒子相对定位的父元素的距离
+        // offsetLeft 在父级元素都没有定位的时候也可以返回，此时相对body
+        // style.left 返回的是行间样式，如果没有，为空
+        // offsetLeft 只读 style.left 可读可写
+        // offsetLeft 返回的是数值，style.left返回数值和单位
+        // offsetLeft 数值会四舍五入 style.left不会
+        var div1=document.getElementsByClassName('div1')[0];
+        var box2=document.getElementsByClassName('box2')[0];
+        console.log(div1.offsetWidth);   
+        console.log(div1.offsetLeft);
+        console.log(box2.style.left); 
+
+
+        // Object.assign的浅克隆和jquery，JSON.parse\JSON.stringify的 extend深克隆
+        var str1='第一个字符串';
+        var str2='第二个字符串';
+        var obj1={
+            name:'first',
+            sex:'woman'
+        }
+        var obj2={
+            name:'second',
+            time:'now'
+        }
+        var nobj=Object.assign(obj1,obj2);  //浅拷贝
+        var nobj=JSON.parse(JSON.stringify(obj1)); //深拷贝
+        console.log(nobj);
+
+        //获得页面都卷掉隐藏的部分长度宽度---兼容性写法
+        var pageSW = window.pageYOffset||document.body.scrollTop||document.documentElement.scrollTop;
+        console.log(pageSW);
+    </script>
+</body>
+</html>

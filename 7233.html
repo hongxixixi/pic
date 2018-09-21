@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    html * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .layout {
+            margin-bottom: 150px;
+        }
+
+
+        .layout article div { 
+            height: 100px;
+        }
+
+        .layout.float .left {
+            float: left;
+            width: 300px;
+            background: red;
+        }
+
+        .layout.float .right {
+            float: right;
+            width: 300px;
+            background: blue;
+        }
+
+        .layout.float .center {
+            background: green;
+
+        }
+    </style>
+</head>
+<body>
+        <section class="layout float">
+                <!-- 用  article 标签包裹左、中、右三个部分 -->
+                <article class="left-right-center">
+                    <!-- 输入 div.left+div.right+div.center，即可生成 -->
+                    <div class="left">
+                        我是 left
+                    </div>
+                    <div class="right">
+                        我是 right
+                    </div>
+                    <div class="center">
+                        浮动解决方案
+                        我是 center
+                    </div>
+        
+                </article>
+            </section>
+
+            <script>
+                    function foo1(){
+                        return{
+                            bar:'hello'
+                    };
+                }
+                    function foo2(){
+                        return
+                        {
+                            bar:'hello'
+                    };
+                }
+            
+            </script>
+</body>
+</html>

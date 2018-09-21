@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // runAsync1()
+        //     .then(function(data){
+        //         console.log(data);
+        //         return runAsync2();
+        //     })
+        //     .then(function(data){
+        //         console.log(data);
+        //         return runAsync3();
+        //     })
+        //     .then(function(data){
+        //         console.log(data);
+        //     });
+
+            function a(){
+                console.log('a');
+                setTimeout(function(){
+                        console.log('异步任务a');
+                    },2000);
+            }
+            
+            function b(){
+                console.log('b');
+                setTimeout(function(){
+                        console.log('异步任务b');
+                    },2000);
+            }
+            
+            function c(){
+                console.log('c');
+                setTimeout(function(){
+                        console.log('异步任务c');
+                    },2000);
+            }
+
+            function runAsync1(data){
+            const a = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log("A end..." + data);
+                let dataA = data+'+B';
+                resolve(dataA);
+            }, 1000);
+          });
+          return a;
+        }
+
+        function runAsync2(data){
+            const b = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log("B end..." + data);
+                let dataB = data+'+C';
+                resolve(dataB);
+            }, 1000);
+          });
+          return b;
+        }   
+        
+        function runAsync3(data){
+            const c = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log("C end..." + data);
+                let dataC = data+'+end';
+                resolve(dataC);
+            }, 3000);
+          });
+          return c;
+        }
+            
+            Promise.all([runAsync1(),runAsync2(),runAsync3()]).then(function(data){
+                console.log(data);
+               })
+
+            // function runAsync1(){
+            //     var p = new Promise(function(resolve, reject){
+            //         //做一些异步操作
+            //         console.log('异步任务1执行完成');
+            //         setTimeout(function(){
+            //             console.log('异步任务1执行完成');
+            //             resolve('随便什么数据1');
+            //         },2000);
+            //     });
+            //     return p;            
+            // }
+
+            // function runAsync2(){
+            //     var p = new Promise(function(resolve, reject){
+            //         //做一些异步操作
+            //         setTimeout(function(){
+            //             console.log('异步任务2执行完成');
+            //             resolve('随便什么数据2');
+            //         }, 2000);
+            //     });
+            //     return p;            
+            // }
+
+            // function runAsync3(){
+            //     var p = new Promise(function(resolve, reject){
+            //         //做一些异步操作
+            //         setTimeout(function(){
+            //             console.log('异步任务3执行完成');
+            //             resolve('随便什么数据3');
+            //         }, 2000);
+            //     });
+            //     return p;            
+            // }
+
+    </script>
+</body>
+</html>

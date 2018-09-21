@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 300px;
+            height: 300px;
+            background: yellow;
+            border-width: 100px;
+        }
+        .inner{
+            width: 300px;
+            height: 50%;
+            border-width: 50px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <script>
+        function fn(y=1,x=y){   //这里如果是x=y先，y会undefine错误
+            //let x=x;     //这里会对 x 形成暂时性死区 
+            //var a=a 则不会 ，相当于 a=a，然后 let a 
+            // var a=a; 
+            // 一般undefine相当于没有操作，null却是一个值
+            // console.log(fn.length);   //  0 ???
+            for(let i=0;i<3;i++){
+                let i=0;
+                // console.log(i);
+            }
+        }
+        fn();
+
+        // 严格模式下不允许用
+        // (function(){
+        // 'use strict';
+        // console.log(0o11 === 011);
+        // })() 
+    </script>
+</body>
+</html>

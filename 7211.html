@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js" ></script>
+</head>
+<body>
+    <div id="app">
+        <table id="tb">
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="item in list">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.ctime}}</td>
+                <td>
+                    <a href="javascript:viod(0)">删除</a>
+                </td>
+            </tr>
+        </table>
+        <input type="text" v-model="formate.id">
+        <input type="text" v-model="formate.name">
+        <button v-on:click="addData">添加数据</button>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                list:[],
+                formate:{
+                    id:'',
+                    name:''
+                }
+            },
+            //Vue对象实例创建成功以后就会自动调用
+            // created:function(){
+            //     this.getlist();
+            // },
+            methods:{
+                // getlist:function(){
+                //     this.$http.get('http://vueapi.ittun.com/api/getprodlist').then(function (response) { 
+                //         if(response.body.status!=0){
+                //             alert(response.body.message);
+                //             return;
+                //         }
+                //         this.list=response.body.message;
+                //         console.log(this.list);
+                //      })
+                // },
+                addData:function(){
+                    console.log(this.formate.id);
+                    var p={id:this.formate.id,name:this.formate.name}
+                    this.list.push(p);
+                    this.formate.id='';
+                    this.formate.name='';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input{
+            width: 300px;
+            height: 50px;
+            background: orange;
+            outline: none;
+            border-radius: 30px;
+            margin-left: 25px;
+        }
+        div{
+            padding-left: 20px;
+        }
+        div::before{
+
+            /* before 伪元素本身是 display:inline,具有行间样式的特点，不能直接设置宽高 */
+            content:'';
+            /* position: absolute; */
+            display:block; 
+            float: left;
+            background-color:green;
+            width:10px;
+            height:306px;
+            }
+    </style>
+</head>
+<body>
+    <div><input type="button" value="点击触发自定义事件" class='but'></div>
+    <script>
+        // var but = document.getElementsByTagName('input')[0];
+        // var myEvent = new Event('clickTest');
+        // but.addEventListener('clickTest',function(){
+        //     this.style.backgroundColor = 'yellow';
+        // })
+        // setTimeout(function(){
+        //      but.dispatchEvent(myEvent);  // dispatchEvent 给元素指派自定义事件
+        // },1000);
+       
+    </script>
+</body>
+</html>

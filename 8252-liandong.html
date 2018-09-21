@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div select{
+            width: 160px;
+            height: 36px;
+        }
+    </style>
+</head>
+<body>
+   <div> 省级：<select name="选择省" id="prov">
+        <option value="">请选择</option>
+       <option value="">浙江省</option>
+       <option value="">山东省</option>
+       <option value="">广东省</option>
+       <option value="">甘肃省</option>
+   </select></div>
+   <div> 县级：<select name="选择县" id="county">
+        <option value="">请选择</option>
+   </select></div>
+   <div> 区级：<select name="选择区" id="dist">
+        <option value="">请选择</option>
+   </select></div>
+
+   <script>
+
+
+   var citys=[
+        ["杭州市","温州市","宁波市","绍兴市"],
+        ["济南市","青岛市","济宁市","潍坊市"],
+        ["广州市","潮阳","澄海","潮州"],
+        ["兰州市","白银","敦煌","定西"]
+    ];
+    //县区数组
+    var qus=[
+        [
+                ["杭州一区","杭州二区"],
+                ["温州一区","温州二区"],
+                ["宁波一区","宁波二区"],
+                ["绍兴一区","绍兴二区"]
+        ],
+
+        [
+                ["济南一区","济南二区"],
+                ["青岛一区","青岛二区"],
+                ["济宁一区","济宁二区"],
+                ["潍坊一区","潍坊二区"],
+        ],
+
+        [
+                ["广州一区","广州二区"],
+                ["潮阳一区","潮阳二区"],
+                ["澄海一区","澄海二区"],
+                ["潮州一区","潮州二区"],
+        ],
+
+        [
+                ["兰州一区","兰州二区"],
+                ["白银一区","白银二区"],
+                ["敦煌一区","敦煌二区"],
+                ["定西一区","定西二区"],
+        ]
+    ];
+   
+    var provice = document.getElementById('prov');
+    var county = document.getElementById('county');
+    var district = document.getElementById('dist');
+    provice.onchange=function(){
+        var html;
+        for(var i=0;i<citys[provice.selectedIndex-1].length;i++){
+              html += `<option>${citys[provice.selectedIndex-1][i]}</option>`;
+        }
+        county.innerHTML = county.innerHTML+html;
+    }
+    county.onchange=function(){
+        var html;
+        for(let i=0; i< qus[county.selectedIndex-1].length ;i++){
+            for(let j=0; j< qus[county.selectedIndex-1][i].length;j++)
+              html += `<option>${qus[provice.selectedIndex-1][i][j]}</option>`;
+        }
+        district.innerHTML = district.innerHTML+html;
+    }
+   </script>
+</body>
+</html>

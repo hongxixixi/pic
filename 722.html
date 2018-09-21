@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js" ></script>
+</head>
+<body>
+    <template id="myAccount">
+        <div>
+            <input type="text" v-model="myData">
+            <a href="#" v-on:click="login">登</a>
+            <h1>登录页面</h1>
+            <h2>注册页面</h2>
+        </div>
+    </template>
+    <div id="app">
+        <account></account>
+        <account></account>
+    </div>
+    <script>
+        Vue.component('account',{
+            template:'#myAccount',
+            data:function(){
+                return {
+                    myData:'vue'
+                }
+            },
+            methods:{
+                login:function(){
+                    alert(this.myData);
+                }
+            }
+        })
+        new Vue({
+            el:'#app'
+        })
+        
+    
+    </script>
+</body>
+</html>

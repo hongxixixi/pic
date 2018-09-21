@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var arr=[2,5,1,6,8,9,4,12,5,7,2,3,2,4,2];
+//     var quickSort = function(arr) {
+//     if (arr.length <= 1) { return arr; }
+//     var pivotIndex = Math.floor(arr.length / 2);   //基准位置（理论上可任意选取）
+//     var pivot = arr.splice(pivotIndex, 1)[0];  //基准数
+//     var left = [];
+//     var right = [];
+//     for (var i = 0; i < arr.length; i++){
+//         if (arr[i] < pivot) {
+//             left.push(arr[i]);
+//         } else {
+//             right.push(arr[i]);
+//         }
+//     }
+//     return quickSort(left).concat([pivot], quickSort(right));  //链接左数组、基准数构成的数组、右数组
+// };
+// var newArr = quickSort(arr);
+
+    var newArr = sort(arr);
+    function sort(arr){
+        var len = arr.length;
+        if(len<=1){
+            return arr;   //递归的出口
+        }
+        var pivot = arr[Math.floor(len/2)];
+        var left=[],pivots=[];   // 如果不用pivots 排序完还可以顺便去重
+        var right=[];
+        for(var i=0;i<len;i++){
+            if(arr[i]<pivot){
+                left.push(arr[i]);
+            }
+            else if(arr[i]==pivot){
+                pivots.push(arr[i]);
+            }
+            else{
+                right.push(arr[i]);
+            }
+        }
+        return sort(left).concat(pivots,sort(right));
+    }
+    </script>
+</body>
+</html>

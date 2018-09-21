@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 300px;
+            height: 100px;
+            white-space: nowrap;        /* 文字不换行 */
+            overflow: hidden;
+            text-overflow: ellipsis;     /* 文字溢出用点表示 */
+            font:18px ;
+            color: grey;
+        }
+        .outer{
+            /* position: absolute; */
+            background: yellow;
+        }
+     
+        .inner{
+            /* position: fixed; */
+            width:90px;
+            height: 90px;
+            background: green;
+            opacity: 0.8;
+        } 
+        /* .content{
+            float: left;
+            width:60px;
+            height: 60px;
+            background: orange;
+        } */
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+        <div class="content"></div>
+    </div>
+
+    <!-- <div class="box">现在介绍一下这三个属性的意思。
+
+            1.overflow:hidden;实现的是让文字溢出容器的部分隐藏起来，方便后面的打点功能。
+            
+            2.white-space:nowrap;让文字不换行。文字的默认状态是换行的，当到达容器壁之后自动换到下一行，这个属性让文字一直在一行显示，即使到了容器壁也不换行。
+            
+            3.text-overflow:ellipsis;文字溢出之后，怎么处理。这里的处理方式是以点状显示。
+            
+            这样三条属性配合起来使用，就可以达成单行文字溢出打点的功能了。</div> -->
+    <script>
+        function Person(name){
+            var that = {
+                name:'name1'
+            }
+            that.name = name;
+            return that;
+        }
+        var person = new Person('name');
+
+        function inherit(child,father){
+            var F = function(){};
+            return function(child,father){
+                F.prototype = father.prototype;         //一定放在下面一行的前面，不然child的原型已经指定为原F的原型 
+                child.prototype = new F();
+                child.prototype.constructor = child;    // 孩子的构造函数从原型上找到的是father，需要修改一下
+                child.prototype.uber = father;          // 保存一下父类
+            }
+        }
+        function Child(){this.a = '1233'};
+        function Father(){this.a = '2345';this.b='1111'};
+        Father.prototype.name = 'father';
+        var herit = inherit();
+        herit(Child,Father);
+        var child = new Child();
+    </script>
+</body>
+</html>
