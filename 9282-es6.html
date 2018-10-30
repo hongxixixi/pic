@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var p = new Promise(function(resolve,reject){
+            console.log('yiled');
+            setTimeout(function(){
+                resolve()
+            },1000);
+        })
+
+        p.then(function(){
+            console.log('yiled');
+            setTimeout(function(){
+                  console.log('yiled');
+                 },1000);
+        }).then(function(){
+            setTimeout(function(){
+                  console.log('yiled');
+                 },2000);
+        })
+
+    </script>
+</body>
+</html>

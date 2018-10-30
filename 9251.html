@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .left-center-right{
+            /* height: 100px; */
+            background: yellow;
+            /* overflow: hidden; */
+            
+        }
+        .left-center-right::after{
+            content: "";
+            clear: both;
+            display: block;
+            /* overflow: hidden; */
+            /* font-size: 0;
+            height: 0; */
+        }
+        .left{
+            float: left;
+            height: 100px;
+            background: red;
+        }
+    </style>
+
+</head>
+
+<body>
+        <article class="left-center-right">
+            <div class="left">
+                我是 left
+            </div>
+        </article>
+
+
+</body>
+
+</html>

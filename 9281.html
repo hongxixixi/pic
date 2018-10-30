@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //找出一个字符串中的坐标信息，一般为相邻的两个数字，中间用空格或者逗号隔开
+        
+        var str = `here null are some tips for formatting you:41,40338,-2,17403.Correct:41.40338,-2.17403.and have coordinate is between -90 and 90.\r\n`
+
+        function getCoordinate( str ){
+            var arr = str.split(/[,: ]/);
+            var arrTemp = [];
+            for(let i=0;i<arr.length;i++){
+                if (parseFloat(arr[i]) ){
+                    if( parseFloat (arr[i+1])) {
+                        arrTemp.push([parseFloat( arr[i] ),parseFloat( arr[++i] )]);
+                        // i 已经+1，直接跳过一个循环
+                 }
+                }
+            }
+            return arrTemp;
+        }
+
+        var arrTemp = getCoordinate(str);
+    </script>
+</body>
+</html>

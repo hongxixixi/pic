@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test() {
+        let promise;
+        function inPromise (fun) {
+            return function (args) {
+                if (promise) {
+                    promise = promise.then( fun.bind( this, args ));
+                } else {
+                    promise = fun( args ).finally(() => {
+                        promise = null;
+                    });
+                }
+                
+                return content;
+            }
+        }
+        
+        function _sleep (num) {
+            return new Promise( resolve => {
+                console.log( 'beginSleep ' + new Date().getTime() % 100000);
+                setTimeout(() => {
+                    console.log( 'sleep end ' + new Date().getTime() % 100000);
+                    resolve();
+                }, num * 1000 );
+            });
+        }
+        
+        function _yield () {
+            return new Promise(resolve => {
+                console.log( 'yield' );
+                resolve();
+            })
+        }
+        
+        let content = {
+            yield: inPromise( _yield ),
+            sleep: inPromise( _sleep )
+        }
+        
+        return content;
+    }
+    test().yield().sleep( 1 ).yield().sleep( 2 ).yield().sleep( 3 ).yield();
+
+    /**
+    * 一个函数test，能够实现这样的效果
+    * test().yield().sleep( 1 ).yield().sleep( 2 ).yield().sleep( 3 ).yield();
+    * 输出 'yield'
+    * 等待1s
+    * 输出 'yield'
+    * 等待2s
+    * 输出 'yield'
+    * 等待3s
+    * 输出 'yield'
+    */
+    </script>
+</body>
+</html>
